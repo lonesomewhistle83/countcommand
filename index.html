@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CountCommand">
-<meta name="theme-color" content="#0B0F1F">
+<meta name="theme-color" content="#EE3124">
 <title>CountCommand</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -414,28 +414,40 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
 </script>
 <style>
 :root{
-  --acc:#E5322D;--acc-deep:#A8231F;--paper:#0B0F1F;--paper-2:#151B31;--ink:#EEF1FA;--muted:#9AA3C2;
-  --rule:#26304F;--alert:#C7CDE3;--on-acc:#FFFFFF;--input-bg:#0F1428;--focus:#FFB4A2;--done:#172347;
-  --hdr:#121834;--warn:#FFB020;--warn-bg:#3D2E00;--warn-ink:#FFD27A;--ok:#4CD97B;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;
+  --acc:#EE3124;--acc-deep:#B4211A;--paper:#FFFFFF;--paper-2:#F6F3F1;--ink:#1B1A19;--muted:#6B6663;
+  --rule:#E6E0DC;--alert:#5B5652;--on-acc:#FFFFFF;--input-bg:#FFFFFF;--focus:#B4211A;--done:#FDEDEB;
+  --hdr:#EE3124;--warn:#B45309;--warn-bg:#FEF3C7;--warn-ink:#92400E;--ok:#1F7A3E;--total:#EE3124;--tab:#EE3124;
+  padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;
 }
-html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;background:var(--paper)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --acc:#F2453D;--acc-deep:#8E1A15;--paper:#141416;--paper-2:#1E1E21;--ink:#F3F1EF;--muted:#A39D99;
+    --rule:#2E2C2B;--alert:#B5AEAA;--on-acc:#FFFFFF;--input-bg:#1B1B1E;--focus:#F2453D;--done:#331B1A;
+    --hdr:#B4211A;--warn:#FFB020;--warn-bg:#3D2E00;--warn-ink:#FFD27A;--ok:#4CD97B;--total:#F2453D;--tab:#F2453D;
+  }
+}
+:root[data-theme="dark"]{
+  --acc:#F2453D;--acc-deep:#8E1A15;--paper:#141416;--paper-2:#1E1E21;--ink:#F3F1EF;--muted:#A39D99;
+  --rule:#2E2C2B;--alert:#B5AEAA;--on-acc:#FFFFFF;--input-bg:#1B1B1E;--focus:#F2453D;--done:#331B1A;
+  --hdr:#B4211A;--warn:#FFB020;--warn-bg:#3D2E00;--warn-ink:#FFD27A;--ok:#4CD97B;--total:#F2453D;--tab:#F2453D;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100%;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.3;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;padding-bottom:52px;color-scheme:dark}
+body{min-height:100%;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.3;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;padding-bottom:52px}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-input::placeholder{color:#5F6A8F}
 
-.hdr{background:var(--hdr);color:#fff;padding:12px 14px 10px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--hdr);z-index:6;pointer-events:none}
+.hdr{background:var(--hdr);color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 10px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .hdr h1{font-size:20px;font-weight:700;letter-spacing:-0.01em;line-height:1.1;display:flex;align-items:center;gap:8px}
-.hdr h1 .test{font-size:10px;font-weight:700;letter-spacing:.06em;background:var(--warn-bg);color:var(--warn-ink);border-radius:4px;padding:2px 6px;vertical-align:middle}
-.hdr .sub{font-size:12px;opacity:.8;margin-top:3px}
+.hdr h1 .test{font-size:10px;font-weight:700;letter-spacing:.06em;background:#FFFFFF;color:#B4211A;border-radius:4px;padding:2px 6px;vertical-align:middle}
+.hdr .sub{font-size:12px;opacity:.9;margin-top:3px}
 .hdr .prog{text-align:right;font-size:12px;opacity:.9;white-space:nowrap}
 .hdr .prog b{display:block;font-size:20px;font-weight:700;line-height:1.1}
 
 .tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px 14px;display:flex;gap:6px}
-.tabs button{flex:1;padding:8px 0;border-radius:8px;font-size:14px;font-weight:600;color:var(--ink);border:1.5px solid var(--rule);background:transparent}
+.tabs button{flex:1;padding:8px 0;border-radius:8px;font-size:14px;font-weight:600;color:var(--tab);border:1.5px solid var(--tab);background:transparent}
 .tabs button[aria-selected="true"]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 .tabs[hidden]{display:none}
 
@@ -451,7 +463,7 @@ input::placeholder{color:#5F6A8F}
 .row .l1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .row .name{font-size:15px;font-weight:600}
 .row .name small{display:block;font-size:11.5px;font-weight:400;color:var(--muted);margin-top:1px}
-.row .total{font-size:17px;font-weight:700;color:#FF6A62;white-space:nowrap}
+.row .total{font-size:17px;font-weight:700;color:var(--total);white-space:nowrap}
 .row .total.empty{color:var(--muted);font-weight:400}
 .row .total span{font-size:11px;font-weight:500;color:var(--muted);margin-left:3px}
 .row .l2{display:flex;align-items:center;gap:7px;margin-top:6px;flex-wrap:wrap}
@@ -467,22 +479,24 @@ input::placeholder{color:#5F6A8F}
 
 .bar{padding:10px 14px;display:flex;gap:7px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--rule)}
 .btn{padding:9px 13px;border-radius:8px;font-size:14px;font-weight:600;background:var(--acc);color:var(--on-acc)}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--rule)}
-.btn.danger{background:transparent;color:var(--alert);border:1.5px solid var(--rule)}
+.btn.ghost{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+.btn.danger{background:transparent;color:var(--alert);border:1.5px solid var(--alert)}
 .btn.sm{padding:6px 10px;font-size:12.5px}
 .btn[disabled]{opacity:.45;cursor:default}
 .note{font-size:12.5px;color:var(--muted);padding:7px 14px 0;line-height:1.35}
 .note b{color:var(--ink)}
 .status{margin:8px 14px 0;padding:8px 10px;border-radius:8px;background:var(--paper-2);font-size:12.5px;line-height:1.35;border:1px solid var(--rule)}
-.status.ok{border-color:#1F5A34}
-.status.warn{border-color:#6B4E00}
+.status.ok{border-color:var(--ok)}
+.status.warn{border-color:var(--warn)}
 .status b{color:var(--ink)}
 .field{display:flex;align-items:center;gap:8px;margin-bottom:7px}
 .field label{font-size:12.5px;color:var(--muted);width:92px;flex:0 0 auto}
-.field input[type=text],.field input[type=password],.field select{flex:1;height:36px;border:1.5px solid var(--rule);border-radius:8px;background:var(--input-bg);padding:0 10px;font-size:14px;min-width:0}
+.field input[type=text],.field input[type=password],.field select{flex:1;height:36px;border:1.5px solid var(--rule);border-radius:8px;background:var(--input-bg);padding:0 10px;font-size:16px;min-width:0}
+main select[data-wpsel]{width:100%;height:38px;border:1.5px solid var(--rule);border-radius:8px;background:var(--input-bg);padding:0 10px;font-size:16px;margin-bottom:6px}
+.chips button small{font-weight:400;opacity:.7}
 .field input.num{width:90px;flex:0 0 auto;height:36px;font-size:16px}
 .sec{padding:12px 14px 5px;border-bottom:1px solid var(--rule)}
-.sec h2{font-size:14px;font-weight:700;color:#FF6A62;margin-bottom:7px}
+.sec h2{font-size:14px;font-weight:700;color:var(--acc);margin-bottom:7px}
 .sec p{font-size:12.5px;color:var(--muted);margin-bottom:8px;line-height:1.35}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
@@ -497,7 +511,7 @@ input::placeholder{color:#5F6A8F}
 .erow .no.wide{width:auto;font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.02em}
 .erow .en{flex:1;font-size:14.5px;font-weight:600;min-width:0}
 .erow .en small{display:block;font-size:11.5px;font-weight:400;color:var(--muted)}
-.erow .ev{font-size:20px;font-weight:700;color:#FF6A62;white-space:nowrap}
+.erow .ev{font-size:20px;font-weight:700;color:var(--total);white-space:nowrap}
 .erow .ev span{font-size:11px;font-weight:500;color:var(--muted);margin-left:4px}
 .erow .ev.missing{color:var(--muted);font-weight:500;font-size:13px}
 .erow .ev.fromlast{color:var(--muted)}
@@ -514,7 +528,7 @@ input::placeholder{color:#5F6A8F}
 .irow .ihead .chev{color:var(--muted);font-size:13px}
 .iedit{padding:4px 14px 12px;background:var(--paper-2)}
 .iedit .acts{display:flex;gap:7px;margin-top:6px;flex-wrap:wrap}
-.search{width:100%;height:38px;border:1.5px solid var(--rule);border-radius:8px;background:var(--input-bg);padding:0 12px;font-size:14px;margin-bottom:8px}
+.search{width:100%;height:38px;border:1.5px solid var(--rule);border-radius:8px;background:var(--input-bg);padding:0 12px;font-size:16px;margin-bottom:8px}
 .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--acc-deep);color:#fff;padding:9px 14px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20;max-width:92vw;text-align:center;line-height:1.3}
 .toast.show{opacity:1}
 .big{padding:26px 14px 10px}
@@ -539,14 +553,14 @@ input::placeholder{color:#5F6A8F}
 <script>
 (function(){
 "use strict";
-var APP_REV=3;
+var APP_REV=5;
 var API="https://base44.app/api/apps/6ab68c2d4ff44d1f889a19c3/functions";
 var AD_NAME="James"; // area director, always the last name on the Counted by chips
 var MASTER={"version":2,"storeEmail":"","spots":[{"id":"frz1","name":"Freezer 1","col":"freezer"},{"id":"frz2","name":"Freezer 2","col":"freezer"},{"id":"frz3","name":"Freezer 3","col":"freezer"},{"id":"walkin","name":"Walk-in","col":"walkin"},{"id":"retarder","name":"Retarder","col":"walkin"},{"id":"boh","name":"BOH dry storage","col":"boh"},{"id":"rack","name":"Make table rack","col":"kitchen"},{"id":"make","name":"Make table","col":"kitchen"},{"id":"wingst","name":"Wing Street","col":"kitchen"},{"id":"cut","name":"Cut table","col":"kitchen"},{"id":"lobby","name":"Lobby counter","col":"foh"},{"id":"soda","name":"Soda machines","col":"foh"}],"items":[{"no":1,"sheet":"BASILPESTO","unit":"POUCH","crew":"Basil pesto sauce","zero":false},{"no":2,"sheet":"BUTTER SCE","unit":"GAL","crew":"Butter sauce","zero":false},{"no":3,"sheet":"GRLCPBLND","unit":"GAL","crew":"Garlic parmesan sauce","zero":false},{"no":4,"sheet":"HTTNEW 12\"","unit":"DISK","crew":"12\" hand tossed dough","zero":false},{"no":5,"sheet":"HTTNEW 14\"","unit":"DISK","crew":"14\" hand tossed dough","zero":false},{"no":6,"sheet":"HUT DUST","unit":"BAG","crew":"Hut dust","zero":false},{"no":7,"sheet":"MAKEBUFSC","unit":"POUCH","crew":"Make table buffalo sauce","zero":false},{"no":8,"sheet":"OIL","unit":"GAL","crew":"Vegetable oil","zero":false},{"no":9,"sheet":"PAN DSK12\"","unit":"DISK","crew":"12\" pan pizza discs","zero":false},{"no":10,"sheet":"PAN DSK14\"","unit":"DISK","crew":"14\" pan pizza discs","zero":false},{"no":11,"sheet":"PAN DSK6\"","unit":"DISK","crew":"Personal pan pizza discs","zero":false},{"no":12,"sheet":"PIZSCE RTU","unit":"POUCH","crew":"Pizza sauce","zero":false},{"no":13,"sheet":"PRMCHS SKR","unit":"EACH","crew":"Parmesan cheese shakers","zero":false},{"no":14,"sheet":"REDPPR SKR","unit":"EACH","crew":"Red pepper shakers","zero":false},{"no":15,"sheet":"SPICY MARN","unit":"POUCH","crew":"Spicy pizza sauce","zero":false},{"no":16,"sheet":"SWTTOM SCE","unit":"POUCH","crew":"Sweet pizza sauce","zero":false},{"no":17,"sheet":"THN DSK12\"","unit":"DISK","crew":"12\" thin crust dough","zero":false},{"no":18,"sheet":"THN DSK14\"","unit":"DISK","crew":"14\" thin crust dough","zero":false},{"no":19,"sheet":"BACON","unit":"LB","crew":"Bacon","zero":false},{"no":20,"sheet":"BANAPPRBAG","unit":"POUCH","crew":"Banana peppers","zero":false},{"no":21,"sheet":"BEEF","unit":"LB","crew":"Beef sausage","zero":false},{"no":22,"sheet":"BL OLIVE","unit":"POUCH","crew":"Black olives","zero":false,"note":"12 pouches per case"},{"no":23,"sheet":"CARM ONION","unit":"LB","crew":"Caramelized onion","zero":true},{"no":24,"sheet":"CC PEP","unit":"LB","crew":"Crispy cupped pepperoni","zero":false},{"no":25,"sheet":"CHKNSTRIPS","unit":"LB","crew":"Chicken strips","zero":false},{"no":26,"sheet":"CKNSAUSAGE","unit":"LB","crew":"Chicken sausage","zero":false},{"no":27,"sheet":"DICED TOM","unit":"CASE","crew":"Diced tomatoes","zero":false},{"no":28,"sheet":"GARLC MINC","unit":"LB","crew":"Minced garlic","zero":false},{"no":29,"sheet":"GR PEPPER","unit":"LB","crew":"Green peppers","zero":false},{"no":30,"sheet":"HAM","unit":"LB","crew":"Ham","zero":false},{"no":31,"sheet":"IT SAUSAGE","unit":"LB","crew":"Italian sausage","zero":false},{"no":32,"sheet":"JALAPENO","unit":"POUCH","crew":"Jalapenos","zero":false},{"no":33,"sheet":"MUSH FRESH","unit":"LB","crew":"Mushrooms","zero":false},{"no":34,"sheet":"ONION","unit":"LB","crew":"Yellow onions","zero":false},{"no":35,"sheet":"PEPPERONI","unit":"LB","crew":"Sliced pepperoni","zero":false},{"no":36,"sheet":"PINE35.2OZ","unit":"POUCH","crew":"Pineapple tidbits","zero":false},{"no":37,"sheet":"PORK","unit":"LB","crew":"Pork sausage","zero":false},{"no":38,"sheet":"ROASTED PEP","unit":"LB","crew":"Roasted red peppers","zero":true},{"no":39,"sheet":"CHEDDAR","unit":"LB","crew":"Cheddar cheese","zero":false},{"no":40,"sheet":"CHEESE","unit":"LB","crew":"Pizza cheese","zero":false},{"no":41,"sheet":"CHSE STRNG","unit":"LB","crew":"String cheese","zero":false},{"no":42,"sheet":"1.5GARLICSC","unit":"EACH","crew":"Garlic dipping cups","zero":false},{"no":43,"sheet":"BSTX DOUGH","unit":"SHEET","crew":"Breadstick dough","zero":false},{"no":44,"sheet":"BSTX SEASN","unit":"LB","crew":"Breadstick seasoning","zero":false},{"no":45,"sheet":"BC WNG DRS","unit":"EACH","crew":"Blue cheese cups","zero":false},{"no":46,"sheet":"BONELESWNG","unit":"BAG","crew":"Boneless wings","zero":false},{"no":47,"sheet":"BOWL LG WS","unit":"EACH","crew":"Large wing bowls","zero":false},{"no":48,"sheet":"BOWL SM WS","unit":"EACH","crew":"Small wing bowls","zero":false},{"no":49,"sheet":"BUFF HOT","unit":"POUCH","crew":"Hot buffalo sauce","zero":false},{"no":50,"sheet":"BUFF MED","unit":"POUCH","crew":"Medium buffalo sauce","zero":false},{"no":51,"sheet":"BUFF MILD","unit":"POUCH","crew":"Mild buffalo sauce","zero":false},{"no":52,"sheet":"CAJUN PKT","unit":"EACH","crew":"Cajun packets","zero":false},{"no":53,"sheet":"CHESSTX WS","unit":"BAG","crew":"Cheese sticks","zero":false},{"no":54,"sheet":"FOILWRAP","unit":"CASE","crew":"Foil sheets","zero":false},{"no":55,"sheet":"FRIES WS","unit":"BAG","crew":"French fries","zero":false},{"no":56,"sheet":"HONEYBBQ WS","unit":"POUCH","crew":"Honey BBQ wing sauce","zero":false},{"no":57,"sheet":"LEMPEP PKT","unit":"EACH","crew":"Lemon pepper packets","zero":false},{"no":58,"sheet":"OIL LL SOY","unit":"LB","crew":"Fry oil","zero":false},{"no":59,"sheet":"RN WNG DRS","unit":"EACH","crew":"Ranch cups","zero":false},{"no":60,"sheet":"SWT CHILI","unit":"BAG","crew":"Sweet chili sauce","zero":false},{"no":61,"sheet":"TRADWINGPR","unit":"BAG","crew":"Traditional wings","zero":false},{"no":62,"sheet":"WS GARPARM","unit":"POUCH","crew":"Garlic parmesan wing sauce","zero":false},{"no":63,"sheet":"6\"PAN DISP","unit":"EACH","crew":"Foil rounds","zero":false},{"no":64,"sheet":"BOX 16\"","unit":"EACH","crew":"Big NY boxes","zero":false},{"no":65,"sheet":"BOX 7\"","unit":"EACH","crew":"Pasta boxes","zero":false},{"no":66,"sheet":"BOX CINNABON","unit":"EACH","crew":"Cinnabon boxes","zero":false},{"no":67,"sheet":"BOX LG","unit":"EACH","crew":"Large boxes","zero":false},{"no":68,"sheet":"BOX MD","unit":"EACH","crew":"Medium boxes","zero":false},{"no":69,"sheet":"BOX MI","unit":"EACH","crew":"Personal pan boxes","zero":false},{"no":70,"sheet":"BOX SIDES","unit":"EACH","crew":"Breadstick boxes","zero":false},{"no":71,"sheet":"BOXTRIPLTR","unit":"EACH","crew":"Triple Treat boxes","zero":false},{"no":72,"sheet":"BSTX BAG","unit":"CASE","crew":"Breadstick bags","zero":false},{"no":73,"sheet":"BX SUPPORT","unit":"EACH","crew":"Box support","zero":true},{"no":74,"sheet":"CUPSC2.5OZ","unit":"EACH","crew":"Plastic sauce cups","zero":false},{"no":75,"sheet":"DOUGHLINER","unit":"EACH","crew":"Dough liners","zero":false},{"no":76,"sheet":"LIDSC2.5OZ","unit":"EACH","crew":"Sauce cup lids","zero":false},{"no":77,"sheet":"MY HUT BOX BOX","unit":"EACH","crew":"My Hut boxes","zero":false},{"no":78,"sheet":"MY HUT BOX TRAY","unit":"EACH","crew":"My Hut box trays","zero":false},{"no":79,"sheet":"TRAY CINNABON","unit":"EACH","crew":"Cinnabon trays","zero":false},{"no":80,"sheet":"2LTR DRPEP","unit":"EACH","crew":"2L Dr Pepper","zero":false},{"no":81,"sheet":"2LTR MTDEW","unit":"EACH","crew":"2L Mountain Dew","zero":false},{"no":82,"sheet":"2LTR PEPSI","unit":"EACH","crew":"2L Pepsi","zero":false},{"no":83,"sheet":"2LTRPEPZERO","unit":"EACH","crew":"2L Pepsi Zero","zero":false},{"no":84,"sheet":"2LTRSTARRY","unit":"EACH","crew":"2L Starry","zero":false},{"no":85,"sheet":"AQUAFINA","unit":"BTLE","crew":"Aquafina bottles","zero":false},{"no":86,"sheet":"BTL DR PEPPER","unit":"BTLE","crew":"Dr Pepper bottles","zero":false},{"no":87,"sheet":"BTL MT DEW","unit":"BTLE","crew":"Mountain Dew bottles","zero":false},{"no":88,"sheet":"BTL ORANGE","unit":"BTLE","crew":"Orange Crush bottles","zero":false},{"no":89,"sheet":"BTL PEPSI","unit":"BTLE","crew":"Pepsi bottles","zero":false},{"no":90,"sheet":"BTL TROLMANGO","unit":"EACH","crew":"Trolley Mountain Dew bottles","zero":false},{"no":91,"sheet":"BTLLEMNADEDOLE","unit":"BTLE","crew":"Lemonade bottles","zero":false},{"no":92,"sheet":"BTLPEPZERO","unit":"BTLE","crew":"Pepsi Zero bottles","zero":false},{"no":93,"sheet":"STARRYBTLE","unit":"BTLE","crew":"Starry bottles","zero":false},{"no":94,"sheet":"ALFREDORTU","unit":"POUCH","crew":"Alfredo sauce","zero":false},{"no":95,"sheet":"PENNE PSTA","unit":"LB","crew":"Penne pasta","zero":false},{"no":96,"sheet":"TRIPLE MAC","unit":"POUCH","crew":"Triple mac and cheese","zero":false},{"no":97,"sheet":"BROWNIE","unit":"EACH","crew":"Brownies","zero":false},{"no":98,"sheet":"CINN SUGAR","unit":"LB","crew":"Cinnamon sugar","zero":false},{"no":99,"sheet":"CINNABON","unit":"EACH","crew":"Cinnabons","zero":false},{"no":100,"sheet":"COOKIE REG","unit":"EACH","crew":"Chocolate chip cookies","zero":false},{"no":101,"sheet":"FROSTING","unit":"BAG","crew":"Cinnabon icing","zero":false},{"no":102,"sheet":"ICING CUP","unit":"EACH","crew":"Icing cups","zero":false},{"no":103,"sheet":"SMORESBLND","unit":"CASE","crew":"S'mores blend","zero":true},{"no":104,"sheet":"CHSE PARMSAN OV","unit":"BAG","crew":"Parmesan cheese","zero":false},{"no":105,"sheet":"LID COOK DISP P","unit":"EACH","crew":"Pasta foil lids","zero":false}],"lines":[{"id":"l1","spot":"frz1","item":95,"label":"cases, 30 lb each (verify)","type":"case","factor":30,"loose":"lb loose","extras":null},{"id":"l2","spot":"frz1","item":96,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l3","spot":"frz1","item":11,"label":"cases of 96","type":"case","factor":96,"loose":"loose discs","extras":null},{"id":"l4","spot":"frz1","item":94,"label":"cases of 4","type":"case","factor":4,"loose":"loose pouches","extras":null},{"id":"l5","spot":"frz1","item":43,"label":"cases of 35","type":"case","factor":35,"loose":"loose sheets","extras":null},{"id":"l6","spot":"frz1","item":9,"label":"cases of 36","type":"case","factor":36,"loose":"loose discs","extras":null},{"id":"l7","spot":"frz1","item":10,"label":"cases of 27","type":"case","factor":27,"loose":"loose discs","extras":null},{"id":"l8","spot":"frz2","item":1,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l9","spot":"frz2","item":53,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l10","spot":"frz2","item":28,"label":"full boxes, 5 lb each","type":"each","factor":5,"loose":null,"extras":null,"name":"Minced garlic boxes"},{"id":"l273","spot":"frz2","item":28,"label":"open box, how full (5 lb when full)","type":"pan","factor":5,"loose":null,"extras":null,"name":"Minced garlic open box"},{"id":"l11","spot":"frz2","item":97,"label":"cases of 24","type":"case","factor":24,"loose":"loose","extras":null},{"id":"l12","spot":"frz2","item":100,"label":"cases of 24","type":"case","factor":24,"loose":"loose","extras":null},{"id":"l13","spot":"frz2","item":99,"label":"cases of 420","type":"case","factor":420,"loose":"loose","extras":null},{"id":"l14","spot":"frz2","item":101,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l15","spot":"frz2","item":61,"label":"cases of 10 bags","type":"case","factor":10,"loose":"loose bags","extras":null},{"id":"l16","spot":"frz2","item":46,"label":"cases of 10 bags","type":"case","factor":10,"loose":"loose bags","extras":null},{"id":"l17","spot":"frz2","item":35,"label":"full cases, 2 bags (25 lb)","type":"each","factor":25,"loose":null,"extras":null},{"id":"l18","spot":"frz2","item":19,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l19","spot":"frz2","item":30,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l20","spot":"frz2","item":26,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l21","spot":"frz2","item":41,"label":"cases, 20 lb each (verify weight)","type":"each","factor":20,"loose":null,"extras":null},{"id":"l22","spot":"frz2","item":55,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l24","spot":"frz3","item":31,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l25","spot":"frz3","item":37,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l26","spot":"frz3","item":21,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l28","spot":"frz3","item":26,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l29","spot":"frz3","item":25,"label":"full cases, 8 bags (20 lb)","type":"each","factor":20,"loose":null,"extras":null,"name":"Chicken strips full cases"},{"id":"l238","spot":"frz3","item":25,"label":"loose bags, 2.5 lb each","type":"each","factor":2.5,"loose":null,"extras":null,"name":"Chicken strips loose bags"},{"id":"l30","spot":"frz3","item":17,"label":"packs of 10","type":"each","factor":10,"loose":null,"extras":null},{"id":"l31","spot":"frz3","item":18,"label":"packs of 10","type":"each","factor":10,"loose":null,"extras":null},{"id":"l32","spot":"frz3","item":24,"label":"full cases, one 10 lb bag each","type":"each","factor":10,"loose":null,"extras":null},{"id":"l33","spot":"frz3","item":35,"label":"full cases, 2 bags (25 lb)","type":"each","factor":25,"loose":null,"extras":null},{"id":"l34","spot":"frz3","item":4,"label":"cases of 36","type":"case","factor":36,"loose":"loose discs (wrapped batch = 9)","extras":null},{"id":"l35","spot":"frz3","item":5,"label":"cases of 32","type":"case","factor":32,"loose":"loose discs (wrapped batch = 8)","extras":null},{"id":"l36","spot":"walkin","item":95,"label":"portioned rounds, about 0.5 lb each (verify with scale)","type":"each","factor":0.5,"loose":null,"extras":[[63,1],[105,1]],"name":"Penne portioned rounds"},{"id":"l37","spot":"walkin","item":96,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l223","spot":"walkin","item":96,"label":"portioned foil rounds, 1/10 pouch each","type":"each","factor":0.1,"loose":null,"extras":[[63,1],[105,1]],"name":"Triple mac portioned rounds"},{"id":"l38","spot":"walkin","item":11,"label":"discs","type":"each","factor":1,"loose":null,"extras":null,"name":"Personal pans tempered/proofed"},{"id":"l39","spot":"walkin","item":94,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l40","spot":"walkin","item":43,"label":"breadsticks, half a sheet each","type":"each","factor":0.5,"loose":null,"extras":null,"name":"Breadsticks tempered/proofed"},{"id":"l271","spot":"walkin","item":43,"label":"double pans, one full sheet each","type":"each","factor":1,"loose":null,"extras":null,"name":"Breadsticks tempered/proofed, double pans"},{"id":"l41","spot":"walkin","item":9,"label":"medium pan discs","type":"each","factor":1,"loose":null,"extras":null,"name":"Medium pans tempered/proofed"},{"id":"l224","spot":"walkin","item":9,"label":"medium stuffed crust discs (each adds 2% of a string cheese case)","type":"each","factor":1,"loose":null,"extras":[[41,0.4]],"name":"Medium stuffed crust tempered/proofed"},{"id":"l42","spot":"walkin","item":10,"label":"large pan discs","type":"each","factor":1,"loose":null,"extras":null,"name":"Large pans tempered/proofed"},{"id":"l225","spot":"walkin","item":10,"label":"large stuffed crust discs (each adds 2.5% of a string cheese case)","type":"each","factor":1,"loose":null,"extras":[[41,0.5]],"name":"Large stuffed crust tempered/proofed"},{"id":"l43","spot":"walkin","item":1,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l44","spot":"walkin","item":97,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l45","spot":"walkin","item":100,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l46","spot":"walkin","item":99,"label":"orders, 10 cinnabons each (one tray each)","type":"each","factor":10,"loose":null,"extras":[[79,1]]},{"id":"l47","spot":"walkin","item":101,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l48","spot":"walkin","item":61,"label":"bags thawing","type":"each","factor":1,"loose":null,"extras":null,"name":"Traditional wings thawing"},{"id":"l49","spot":"walkin","item":61,"label":"full half pans, 2 bags each","type":"each","factor":2,"loose":null,"extras":null,"name":"Traditional wings full half pans"},{"id":"l50","spot":"walkin","item":35,"label":"bags, 12.5 lb each (case = 2 bags)","type":"each","factor":12.5,"loose":null,"extras":null},{"id":"l227","spot":"walkin","item":35,"label":"lexan tubs, one bag (12.5 lb) when full","type":"pan","factor":12.5,"loose":null,"extras":null,"name":"Sliced pepperoni lexan"},{"id":"l51","spot":"walkin","item":19,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l269","spot":"walkin","item":19,"label":"lexan tub, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Bacon lexan"},{"id":"l52","spot":"walkin","item":30,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l270","spot":"walkin","item":30,"label":"lexan tub, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Ham lexan"},{"id":"l53","spot":"walkin","item":26,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l228","spot":"walkin","item":26,"label":"lexan tubs, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Chicken sausage lexan"},{"id":"l54","spot":"walkin","item":41,"label":"cases, how full, 20 lb when full (verify)","type":"pan","factor":20,"loose":null,"extras":null,"name":"String cheese open case"},{"id":"l57","spot":"walkin","item":31,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l235","spot":"walkin","item":31,"label":"lexan tubs, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Italian sausage lexan"},{"id":"l58","spot":"walkin","item":37,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l236","spot":"walkin","item":37,"label":"lexan tubs, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Pork sausage lexan"},{"id":"l59","spot":"walkin","item":21,"label":"bags, 5 lb each","type":"each","factor":5,"loose":null,"extras":null},{"id":"l237","spot":"walkin","item":21,"label":"lexan tubs, one bag (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Beef sausage lexan"},{"id":"l60","spot":"walkin","item":17,"label":"discs tempering","type":"each","factor":1,"loose":null,"extras":null,"name":"Medium thin tempered"},{"id":"l61","spot":"walkin","item":18,"label":"discs tempering","type":"each","factor":1,"loose":null,"extras":null,"name":"Large thin tempered"},{"id":"l62","spot":"walkin","item":24,"label":"unopened bags, 10 lb each","type":"each","factor":10,"loose":null,"extras":null},{"id":"l240","spot":"walkin","item":24,"label":"lexan tubs, one bag (10 lb) when full","type":"pan","factor":10,"loose":null,"extras":null,"name":"Crispy cupped pepperoni lexan"},{"id":"l63","spot":"walkin","item":4,"label":"bins of 6 tempering","type":"case","factor":6,"loose":"loose discs","extras":null,"name":"Medium hand tossed tempering"},{"id":"l64","spot":"walkin","item":5,"label":"bins of 6 tempering","type":"case","factor":6,"loose":"loose discs","extras":null,"name":"Large hand tossed tempering"},{"id":"l65","spot":"walkin","item":2,"label":"gallon jugs","type":"each","factor":1,"loose":null,"extras":null},{"id":"l66","spot":"walkin","item":3,"label":"gallon jugs","type":"each","factor":1,"loose":null,"extras":null},{"id":"l67","spot":"walkin","item":12,"label":"marinara cups (40 per pouch, each adds a cup and lid)","type":"each","factor":0.025,"loose":null,"extras":[[74,1],[76,1]],"name":"Marinara cups"},{"id":"l68","spot":"walkin","item":40,"label":"cases, 20 lb each","type":"each","factor":20,"loose":null,"extras":null},{"id":"l69","spot":"walkin","item":33,"label":"cases, 5 lb each","type":"case","factor":5,"loose":"lb loose from an open case","extras":null},{"id":"l70","spot":"walkin","item":34,"label":"bags, 2.5 lb each","type":"each","factor":2.5,"loose":null,"extras":null},{"id":"l71","spot":"walkin","item":29,"label":"bags, 2.5 lb each","type":"each","factor":2.5,"loose":null,"extras":null},{"id":"l72","spot":"walkin","item":27,"label":"cases","type":"each","factor":1,"loose":null,"extras":null},{"id":"l73","spot":"walkin","item":25,"label":"bags, 2.5 lb each","type":"each","factor":2.5,"loose":null,"extras":null},{"id":"l239","spot":"walkin","item":25,"label":"lexan tubs, 2 bags (5 lb) when full","type":"pan","factor":5,"loose":null,"extras":null,"name":"Chicken strips lexan"},{"id":"l74","spot":"walkin","item":32,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l75","spot":"walkin","item":22,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l76","spot":"walkin","item":20,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l77","spot":"walkin","item":39,"label":"bags, 1 lb each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l78","spot":"walkin","item":104,"label":"bags, 1 lb each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l79","spot":"walkin","item":59,"label":"full cases, 180 cups each","type":"each","factor":180,"loose":null,"extras":null},{"id":"l80","spot":"walkin","item":36,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l81","spot":"retarder","item":4,"label":"medium hand tossed","type":"each","factor":1,"loose":null,"extras":null,"name":"Medium hand tossed stretched"},{"id":"l82","spot":"retarder","item":5,"label":"large hand tossed","type":"each","factor":1,"loose":null,"extras":null,"name":"Large hand tossed stretched"},{"id":"l83","spot":"retarder","item":11,"label":"personal pans","type":"each","factor":1,"loose":null,"extras":null,"name":"Personal pans proofed"},{"id":"l84","spot":"retarder","item":9,"label":"medium pan","type":"each","factor":1,"loose":null,"extras":null,"name":"Medium pans proofed"},{"id":"l85","spot":"retarder","item":10,"label":"large pan","type":"each","factor":1,"loose":null,"extras":null,"name":"Large pans proofed"},{"id":"l86","spot":"retarder","item":9,"label":"medium stuffed crust (each adds 2% of a string cheese case)","type":"each","factor":1,"loose":null,"extras":[[41,0.4]],"name":"Medium stuffed crust proofed"},{"id":"l87","spot":"retarder","item":10,"label":"large stuffed crust (each adds 2.5% of a string cheese case)","type":"each","factor":1,"loose":null,"extras":[[41,0.5]],"name":"Large stuffed crust proofed"},{"id":"l88","spot":"retarder","item":17,"label":"medium thin","type":"each","factor":1,"loose":null,"extras":null,"name":"Medium thin proofed"},{"id":"l89","spot":"retarder","item":18,"label":"large thin","type":"each","factor":1,"loose":null,"extras":null,"name":"Large thin proofed"},{"id":"l90","spot":"retarder","item":43,"label":"breadsticks, half a sheet each","type":"each","factor":0.5,"loose":null,"extras":null,"name":"Breadsticks proofed"},{"id":"l272","spot":"retarder","item":43,"label":"double pans, one full sheet each","type":"each","factor":1,"loose":null,"extras":null,"name":"Breadsticks proofed, double pans"},{"id":"l91","spot":"boh","item":63,"label":"cases of 500","type":"case","factor":500,"loose":"loose","extras":null},{"id":"l92","spot":"boh","item":79,"label":"cases of 300","type":"case","factor":300,"loose":"loose","extras":null},{"id":"l93","spot":"boh","item":74,"label":"full cases, 25 sleeves (2500)","type":"each","factor":2500,"loose":null,"extras":null,"name":"Plastic sauce cups full cases"},{"id":"l245","spot":"boh","item":74,"label":"sleeves of 100","type":"case","factor":100,"loose":"loose","extras":null,"name":"Plastic sauce cups open case"},{"id":"l94","spot":"boh","item":76,"label":"full cases, 25 sleeves (2500)","type":"each","factor":2500,"loose":null,"extras":null,"name":"Sauce cup lids full cases"},{"id":"l246","spot":"boh","item":76,"label":"sleeves of 100","type":"case","factor":100,"loose":"loose","extras":null,"name":"Sauce cup lids open case"},{"id":"l95","spot":"boh","item":75,"label":"cases, how full (1000 per case)","type":"pan","factor":1000,"loose":null,"extras":null,"fracs":[[0,"0"],[0.125,"\u215b"],[0.25,"\u00bc"],[0.5,"\u00bd"],[0.6667,"\u2154"],[0.75,"\u00be"],[1,"Full"]]},{"id":"l96","spot":"boh","item":69,"label":"cases of 250","type":"case","factor":250,"loose":"loose","extras":null},{"id":"l97","spot":"boh","item":68,"label":"cases of 120","type":"case","factor":120,"loose":"loose","extras":null},{"id":"l98","spot":"boh","item":67,"label":"cases of 50","type":"case","factor":50,"loose":"loose","extras":null},{"id":"l99","spot":"boh","item":64,"label":"bundles of 60","type":"case","factor":60,"loose":"loose","extras":null},{"id":"l100","spot":"boh","item":65,"label":"bundles of 100","type":"case","factor":100,"loose":"loose","extras":null},{"id":"l101","spot":"boh","item":58,"label":"cubes, how full (35 lb each)","type":"pan","factor":35,"loose":null,"extras":null,"name":"Fry oil cubes"},{"id":"l251","spot":"boh","item":58,"label":"adds 2 cubes (70 lb) for the oil in the fryer","type":"toggle","factor":70,"loose":null,"extras":null,"name":"Fryer oil changed this week?"},{"id":"l102","spot":"boh","item":8,"label":"jugs, how full (5 gal each)","type":"pan","factor":5,"loose":null,"extras":null},{"id":"l103","spot":"boh","item":48,"label":"sleeves of 95","type":"case","factor":95,"loose":"loose","extras":null},{"id":"l104","spot":"boh","item":47,"label":"sleeves of 95","type":"case","factor":95,"loose":"loose","extras":null},{"id":"l105","spot":"boh","item":77,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l106","spot":"boh","item":70,"label":"cases of 250","type":"case","factor":250,"loose":"loose","extras":null},{"id":"l107","spot":"boh","item":6,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l108","spot":"boh","item":44,"label":"bags (verify lb per bag)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l109","spot":"boh","item":14,"label":"full cases of 48","type":"each","factor":48,"loose":null,"extras":null},{"id":"l110","spot":"boh","item":13,"label":"full cases of 48","type":"each","factor":48,"loose":null,"extras":null},{"id":"l111","spot":"rack","item":12,"label":"cases of 6","type":"case","factor":6,"loose":"loose pouches","extras":null},{"id":"l112","spot":"rack","item":16,"label":"cases of 6","type":"case","factor":6,"loose":"loose pouches","extras":null},{"id":"l113","spot":"rack","item":15,"label":"pouches","type":"each","factor":1,"loose":null,"extras":null},{"id":"l114","spot":"rack","item":51,"label":"pouches, closed cases too (verify per case)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l115","spot":"rack","item":50,"label":"pouches, closed cases too (verify per case)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l116","spot":"rack","item":49,"label":"pouches, closed cases too (verify per case)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l117","spot":"rack","item":62,"label":"cases of 8","type":"case","factor":8,"loose":"loose pouches","extras":null},{"id":"l118","spot":"rack","item":56,"label":"pouches, closed cases too (verify per case)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l119","spot":"rack","item":60,"label":"bags, closed cases too (verify per case)","type":"each","factor":1,"loose":null,"extras":null},{"id":"l120","spot":"rack","item":48,"label":"sleeves of 95","type":"case","factor":95,"loose":"loose","extras":null},{"id":"l121","spot":"rack","item":47,"label":"sleeves of 95","type":"case","factor":95,"loose":"loose","extras":null},{"id":"l122","spot":"rack","item":72,"label":"cases, how full (open case by fullness)","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l123","spot":"rack","item":77,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l124","spot":"rack","item":64,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l125","spot":"rack","item":105,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l126","spot":"rack","item":7,"label":"cases of 15 (verify)","type":"case","factor":15,"loose":"loose pouches","extras":null},{"id":"l127","spot":"rack","item":71,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l128","spot":"rack","item":68,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l129","spot":"rack","item":67,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l130","spot":"rack","item":66,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l131","spot":"rack","item":78,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l248","spot":"rack","item":69,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l250","spot":"rack","item":65,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l132","spot":"make","item":40,"label":"hotel pan, one case (20 lb) when full","type":"pan","factor":20,"loose":null,"extras":null,"nofull":true},{"id":"l133","spot":"make","item":12,"label":"half pan, 2 pouches when full","type":"pan","factor":2,"loose":null,"extras":null,"nofull":true},{"id":"l274","spot":"make","item":15,"label":"sixth pan, 3 pouches when full","type":"pan","factor":3,"loose":null,"extras":null,"nofull":true},{"id":"l136","spot":"make","item":94,"label":"quarter pan, 2 pouches when full","type":"pan","factor":2,"loose":null,"extras":null,"nofull":true},{"id":"l244","spot":"make","item":1,"label":"squeeze bottle, 3 pouches when full","type":"pan","factor":3,"loose":null,"extras":null,"nofull":true},{"id":"l137","spot":"make","item":19,"label":"quarter pan, 2/3 of a bag (3.33 lb) when full","type":"pan","factor":3.3333,"loose":null,"extras":null,"nofull":true},{"id":"l138","spot":"make","item":30,"label":"quarter pan, half a bag (2.5 lb) when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l139","spot":"make","item":21,"label":"quarter pans, 2.5 lb when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l140","spot":"make","item":37,"label":"quarter pans, 2.5 lb when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l241","spot":"make","item":21,"label":"beef and pork mix half pan, 5 lb when full, split 50/50","type":"pan","factor":2.5,"loose":null,"extras":[[37,2.5]],"name":"Beef & pork mix half pan","nofull":true},{"id":"l141","spot":"make","item":31,"label":"quarter pans, 2.5 lb when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l142","spot":"make","item":35,"label":"half pans, half a bag (6.25 lb) when full","type":"pan","factor":6.25,"loose":null,"extras":null,"nofull":true},{"id":"l143","spot":"make","item":24,"label":"quarter pans, quarter bag (2.5 lb) when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l144","spot":"make","item":25,"label":"sixth pans, half a bag (1.25 lb) when full","type":"pan","factor":1.25,"loose":null,"extras":null,"nofull":true},{"id":"l229","spot":"make","item":26,"label":"sixth pan, eighth of a bag (0.625 lb) when full. Leave blank if not on the table","type":"pan","factor":0.625,"loose":null,"extras":null,"nofull":true},{"id":"l242","spot":"make","item":26,"label":"quarter pan, half a bag (2.5 lb) when full. Leave blank if not on the table","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l145","spot":"make","item":34,"label":"quarter pan, one bag (2.5 lb) when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l146","spot":"make","item":29,"label":"quarter pan, one bag (2.5 lb) when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l147","spot":"make","item":33,"label":"third pan, half a case (2.5 lb) when full","type":"pan","factor":2.5,"loose":null,"extras":null,"nofull":true},{"id":"l148","spot":"make","item":22,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l149","spot":"make","item":32,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l150","spot":"make","item":20,"label":"sixth pan, half a pouch when full","type":"pan","factor":0.5,"loose":null,"extras":null,"nofull":true},{"id":"l151","spot":"make","item":28,"label":"lb","type":"each","factor":1,"loose":null,"extras":null},{"id":"l152","spot":"make","item":39,"label":"sixth pan, one bag (1 lb) when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l153","spot":"make","item":104,"label":"sixth pan, one bag (1 lb) when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l243","spot":"make","item":59,"label":"cups from the open case","type":"each","factor":1,"loose":null,"extras":null},{"id":"l154","spot":"make","item":27,"label":"sixth pan, one case when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l155","spot":"make","item":36,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l156","spot":"make","item":100,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l157","spot":"make","item":97,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l158","spot":"make","item":99,"label":"orders, 10 cinnabons each (one tray each)","type":"each","factor":10,"loose":null,"extras":[[79,1]]},{"id":"l160","spot":"make","item":98,"label":"big lexan, estimate lb","type":"each","factor":1,"loose":null,"extras":null},{"id":"l247","spot":"make","item":12,"label":"marinara cups (40 per pouch, each adds a cup and lid)","type":"each","factor":0.025,"loose":null,"extras":[[74,1],[76,1]],"name":"Marinara cups"},{"id":"l260","spot":"make","item":7,"label":"squeeze bottle, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l268","spot":"make","item":96,"label":"portioned foil rounds, 1/10 pouch each (adds a foil round and lid)","type":"each","factor":0.1,"loose":null,"extras":[[63,1],[105,1]],"name":"Triple mac portioned rounds"},{"id":"l161","spot":"wingst","item":61,"label":"half pans, 2 bags each","type":"pan","factor":2,"loose":null,"extras":null},{"id":"l162","spot":"wingst","item":46,"label":"half pans, 2 bags each","type":"pan","factor":2,"loose":null,"extras":null},{"id":"l226","spot":"wingst","item":53,"label":"portioned bags, 10 per freezer bag","type":"each","factor":0.1,"loose":null,"extras":null,"name":"Cheese sticks portioned bags"},{"id":"l234","spot":"wingst","item":55,"label":"portioned bags, 10 per freezer bag","type":"each","factor":0.1,"loose":null,"extras":null,"name":"Fries portioned bags"},{"id":"l163","spot":"wingst","item":57,"label":"packets","type":"each","factor":1,"loose":null,"extras":null},{"id":"l164","spot":"wingst","item":52,"label":"packets","type":"each","factor":1,"loose":null,"extras":null},{"id":"l165","spot":"wingst","item":62,"label":"open pouches on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l257","spot":"wingst","item":62,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l166","spot":"wingst","item":60,"label":"open bags on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l258","spot":"wingst","item":60,"label":"sixth pan, one bag when full","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l167","spot":"wingst","item":51,"label":"open pouches on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l254","spot":"wingst","item":51,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l168","spot":"wingst","item":50,"label":"open pouches on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l255","spot":"wingst","item":50,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l169","spot":"wingst","item":49,"label":"open pouches on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l256","spot":"wingst","item":49,"label":"sixth pan, one pouch when full","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l170","spot":"wingst","item":56,"label":"open pouches on the rack","type":"each","factor":1,"loose":null,"extras":null},{"id":"l259","spot":"wingst","item":56,"label":"sixth pan, half a pouch when full","type":"pan","factor":0.5,"loose":null,"extras":null},{"id":"l171","spot":"wingst","item":48,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l172","spot":"wingst","item":47,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l249","spot":"wingst","item":69,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l252","spot":"wingst","item":77,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l253","spot":"wingst","item":70,"label":"cases of 250","type":"case","factor":250,"loose":"loose","extras":null},{"id":"l264","spot":"wingst","item":78,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l173","spot":"cut","item":6,"label":"bags","type":"each","factor":1,"loose":null,"extras":null},{"id":"l174","spot":"cut","item":44,"label":"open bag, how full (verify lb per bag)","type":"pan","factor":1,"loose":null,"extras":null},{"id":"l175","spot":"cut","item":59,"label":"cups","type":"each","factor":1,"loose":null,"extras":null},{"id":"l176","spot":"cut","item":102,"label":"full cases of 144","type":"case","factor":144,"loose":"loose cups","extras":null},{"id":"l177","spot":"cut","item":45,"label":"full cases of 144","type":"case","factor":144,"loose":"loose cups","extras":null},{"id":"l178","spot":"cut","item":42,"label":"full cases of 144","type":"case","factor":144,"loose":"loose cups","extras":null},{"id":"l179","spot":"cut","item":2,"label":"open gallon, how full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l180","spot":"cut","item":3,"label":"open gallon, how full","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true},{"id":"l181","spot":"cut","item":65,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l182","spot":"cut","item":77,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l183","spot":"cut","item":70,"label":"cases of 250","type":"case","factor":250,"loose":"loose","extras":null},{"id":"l184","spot":"cut","item":69,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l185","spot":"cut","item":72,"label":"stack on the cut table, as a fraction of a case","type":"pan","factor":1,"loose":null,"extras":null,"nofull":true,"fracs":[[0,"0"],[0.125,"\u215b"],[0.25,"\u00bc"],[0.5,"\u00bd"],[0.75,"\u00be"],[1,"Full"]]},{"id":"l186","spot":"cut","item":68,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l187","spot":"cut","item":67,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l261","spot":"cut","item":105,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l262","spot":"cut","item":71,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l263","spot":"cut","item":66,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l188","spot":"lobby","item":82,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l189","spot":"lobby","item":80,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l190","spot":"lobby","item":81,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l191","spot":"lobby","item":83,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l192","spot":"lobby","item":84,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l193","spot":"lobby","item":89,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l194","spot":"lobby","item":86,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l195","spot":"lobby","item":87,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l196","spot":"lobby","item":91,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l197","spot":"lobby","item":92,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l198","spot":"lobby","item":93,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l199","spot":"lobby","item":90,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l200","spot":"lobby","item":88,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l201","spot":"lobby","item":85,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l202","spot":"lobby","item":14,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l203","spot":"lobby","item":13,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l204","spot":"lobby","item":54,"label":"cases","type":"each","factor":1,"loose":null,"extras":null},{"id":"l205","spot":"soda","item":82,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l206","spot":"soda","item":80,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l207","spot":"soda","item":81,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l208","spot":"soda","item":83,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l209","spot":"soda","item":84,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l210","spot":"soda","item":89,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l211","spot":"soda","item":86,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l212","spot":"soda","item":87,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l213","spot":"soda","item":91,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l214","spot":"soda","item":92,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l215","spot":"soda","item":93,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l216","spot":"soda","item":90,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l217","spot":"soda","item":88,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l218","spot":"soda","item":85,"label":"bottles","type":"each","factor":1,"loose":null,"extras":null},{"id":"l219","spot":"soda","item":68,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l220","spot":"soda","item":67,"label":"each","type":"each","factor":1,"loose":null,"extras":null},{"id":"l221","spot":"soda","item":64,"label":"each","type":"each","factor":1,"loose":null,"extras":null}],"rev":16};
 var COLS=[["boh","BOH Storage"],["walkin","Walk-in"],["freezer","Freezer"],["foh","FOH Storage"],["kitchen","Kitchen"]];
 var FRACS=[[0,"0"],[0.25,"¼"],[0.5,"½"],[0.75,"¾"],[1,"Full"]];
 var state={device:null,store:null,stores:null,storesErr:"",setupMeta:null,config:null,dirty:false,current:null,last:null,history:[],queue:[],screen:"",flushing:false,lastSync:0};
-var ui={tab:"count",spot:"",search:"",ssearch:"",open:null,armed:{},setupSpot:"",pub:false,pin:"",pinName:"",pinNote:""};
+var ui={tab:"count",spot:"",search:"",ssearch:"",open:null,armed:{},setupSpot:"",pub:false,pin:"",pinName:"",pinNote:"",namesEdit:null,nmPin:false};
 
 /* storage */
 function lsGet(k){try{var v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
@@ -558,6 +572,9 @@ function nowIso(){return new Date().toISOString();}
 function K(name){return "cc_"+(state.store?String(state.store.store_number):"x")+"_"+name;}
 function pad6(n){var s=String(n===undefined||n===null?"":n).replace(/\D/g,"");while(s.length<6)s="0"+s;return s;}
 function codeFor(){return (state.store&&state.store.code)||pad6(state.store.store_number);}
+// Names on the Counted by chips: the store's list (GM first), or just the GM if nothing saved yet, then the area director last.
+function baseNames(){var c=(state.store&&state.store.counters)||[];if(c.length)return c.slice();return (state.store&&state.store.gm_name)?[state.store.gm_name]:[];}
+function namesList(){var n=baseNames();if(n.indexOf(AD_NAME)<0)n.push(AD_NAME);return n;}
 function emptyCurrent(){return {countId:uuid(),startedAt:nowIso(),entries:{},entered:{},overrides:{},counter:"",sends:[]};}
 
 function loadDevice(){var d=lsGet("cc_device");if(!d){d=uuid();lsSet("cc_device",d);}state.device=d;}
@@ -621,7 +638,7 @@ function syncSetup(opts){
     if(r.status===404){toast("Store not found on the server");switchStore();return;}
     if(r.status!==200){if(opts.manual)toast(r.data&&r.data.error||"Server error "+r.status);if(state.screen==="connecting")render();return;}
     var d=r.data||{};
-    if(d.store){state.store.name=d.store.name||state.store.name;state.store.area=d.store.area||"";state.store.counters=d.store.counters||[];state.store.setup_version=d.setup_version||0;lsSet("cc_store",state.store);}
+    if(d.store){state.store.name=d.store.name||state.store.name;state.store.area=d.store.area||"";state.store.counters=d.store.counters||[];state.store.gm_name=d.store.gm_name||state.store.gm_name||"";state.store.setup_version=d.setup_version||0;lsSet("cc_store",state.store);}
     if(d.needs_setup){
       if(!state.config){state.screen="needsetup";render();}
       else if(opts.manual)toast("Server has no setup for this store yet. Publish yours.");
@@ -734,6 +751,7 @@ function render(){
   else sub.textContent=storeLabel()+", "+new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
   if(state.screen==="picker"||!state.store){renderPicker();return;}
   if(state.screen==="needsetup"){renderNeedSetup();return;}
+  if(state.screen==="wizard"){if(!wiz)wizLoad();renderWizard();return;}
   if(state.screen==="code"){renderCode();return;}
   if(!state.config){renderConnecting();return;}
   var p=progress();
@@ -775,7 +793,8 @@ function renderNeedSetup(){
   h+='<p>Every store is different, so the GM walks the app through this store once: the count sheet items, the spots in walking order, what lives in each spot and how it\'s stored. After that every phone that picks this store loads the same setup and stays in step with it.</p>';
   h+='<div class="field"><label>GM PIN</label><input type="password" inputmode="numeric" id="gmpin" autocomplete="off" value="'+esc(ui.pin)+'"></div>';
   h+='<div class="field"><label>Your name</label><input type="text" id="gmname" value="'+esc(ui.pinName)+'" placeholder="Who is setting this up"></div>';
-  h+='<div class="acts"><button class="btn" id="startWizard">Set up this store</button></div>';
+  var draft=lsGet(K("wiz"));
+  h+='<div class="acts"><button class="btn" id="startWizard">'+(draft&&draft.a?'Continue the setup guide (step '+((draft.step||0)+1)+' of '+WIZ_STEPS.length+')':'Set up this store')+'</button></div>';
   h+='<p>Takes about 30 minutes with the count sheet in hand. Save as you go, finish later if you get pulled away.</p>';
   h+='<div class="acts"><button class="btn ghost sm" id="switchStore">Switch store</button></div></div>';
   main.innerHTML=h;
@@ -848,8 +867,7 @@ function renderSheet(){
   h+='</div>';
   h+=sendStatus();
   h+='<div class="sec" style="border-bottom:0;padding-bottom:0"><h2>Counted by</h2>';
-  var names=(state.store.counters||[]).slice();
-  if(names.indexOf(AD_NAME)<0)names.push(AD_NAME);
+  var names=namesList();
   if(names.length){h+='<div class="chips">';names.forEach(function(n){h+='<button type="button" data-name="'+esc(n)+'" aria-pressed="'+(state.current.counter===n?"true":"false")+'">'+esc(n)+'</button>';});h+='</div>';}
   h+='<div class="field"><label>'+(names.length?'Or type':'Name')+'</label><input type="text" id="counter" placeholder="Your name" value="'+esc(state.current.counter||"")+'"></div></div>';
   h+='<div class="note"><b>'+p.n+' of '+p.total+'</b> items counted. Spots: '+(counted.length?esc(counted.join(", ")):'none yet')+'. Send Completed Count Sheet sends the count to James and opens the share sheet with the PDF, named <b>'+esc(countName())+'.pdf</b>. Share it to Gmail, send it to your Flynn email, print it, and key it into SUS from the printout.</div>';
@@ -868,7 +886,7 @@ function renderSheet(){
 }
 function storeSecInner(){
   var m=state.setupMeta;var h='';
-  h+='<h2>Store</h2><p><b style="color:var(--ink)">'+esc(storeLabel())+'</b>. '+(m?'Setup v'+m.version+(m.saved_at?', published '+fmtDate(m.saved_at):'')+(m.saved_by?' by '+esc(m.saved_by):'')+'.':'Nothing published yet.')+' '+(state.dirty?'<b style="color:var(--warn-ink)">Unpublished changes on this phone.</b> Publish to make them the store\'s setup for everyone, or discard them.':'This phone matches the server.')+'</p>';
+  h+='<h2>Store</h2><p><b style="color:var(--ink)">'+esc(storeLabel())+'</b>. '+(m?'Setup v'+m.version+(m.saved_at?', published '+fmtDate(m.saved_at):'')+(m.saved_by?' by '+esc(m.saved_by):'')+'.':'Nothing published yet.')+' '+(state.dirty?'<b style="color:var(--warn)">Unpublished changes on this phone.</b> Publish to make them the store\'s setup for everyone, or discard them.':'This phone matches the server.')+'</p>';
   h+='<div class="acts"><button class="btn ghost sm" id="checkBtn">Check for updates</button>';
   if(state.dirty){h+='<button class="btn sm" id="pubBtn">'+(ui.pub?'Cancel':'Publish changes')+'</button><button class="btn danger sm" id="discardBtn">'+(ui.armed.discard?'Tap again to discard':'Discard changes')+'</button>';}
   h+='<button class="btn ghost sm" id="switchStore">Switch store</button></div>';
@@ -880,10 +898,38 @@ function storeSecInner(){
   }
   return h;
 }
+function namesSecInner(){
+  var list=ui.namesEdit||baseNames();var h='';
+  h+='<h2>Who counts</h2><p>The names on the Counted by chips. The GM goes first. '+esc(AD_NAME)+' is always last and stays. Add and remove people as they come and go, then save with the GM PIN.</p>';
+  list.forEach(function(n,i){h+='<div class="field"><input type="text" data-nm="'+i+'" value="'+esc(n)+'" placeholder="Name"><button class="btn danger sm" data-nmrm="'+i+'">Remove</button></div>';});
+  h+='<div class="field"><input type="text" disabled value="'+esc(AD_NAME)+'"><span class="lab">always last</span></div>';
+  h+='<div class="acts"><button class="btn ghost sm" id="nmAdd">Add name</button>'+(ui.namesEdit?'<button class="btn sm" id="nmSave">'+(ui.nmPin?'Cancel':'Save names')+'</button>':'')+'</div>';
+  if(ui.namesEdit&&ui.nmPin){
+    h+='<div class="field"><label>GM PIN</label><input type="password" inputmode="numeric" id="nmpin" autocomplete="off"></div>';
+    h+='<div class="acts"><button class="btn sm" id="nmGo">Save now</button></div>';
+  }
+  return h;
+}
+function refreshNames(){var el=document.getElementById("namesSec");if(el)el.innerHTML=namesSecInner();}
+function saveNames(pin){
+  var list=(ui.namesEdit||[]).map(function(x){return String(x).trim();}).filter(Boolean);
+  if(!list.length){toast("Need at least one name");return;}
+  if(!pin){toast("Enter the GM PIN");return;}
+  if(!online()){toast("No signal. Saving names needs it.");return;}
+  toast("Saving…");
+  api("save-names",{store_number:state.store.store_number,gm_pin:pin,master_pin:pin,counters:list}).then(function(r){
+    if(r.status===200){
+      var st=r.data.store||{};state.store.counters=st.counters||list;if(st.gm_name)state.store.gm_name=st.gm_name;lsSet("cc_store",state.store);
+      ui.namesEdit=null;ui.nmPin=false;refreshNames();toast("Names saved for every phone on this store");
+    } else if(r.status===403)toast("Wrong PIN");
+    else toast(r.data&&r.data.error||"Server error "+r.status);
+  }).catch(function(){toast("Couldn't reach the server");});
+}
 function renderSetup(){
   if(!spot(ui.setupSpot))ui.setupSpot=state.config.spots[0].id;
   var h='';
   h+='<div class="sec" id="storeSec">'+storeSecInner()+'</div>';
+  h+='<div class="sec" id="namesSec">'+namesSecInner()+'</div>';
   h+='<div class="sec"><h2>Spots</h2><p>Name them the way you say them. The column is where the spot lands on the printed sheet.</p>';
   state.config.spots.forEach(function(s){
     h+='<div class="field"><input type="text" data-spot-name="'+esc(s.id)+'" value="'+esc(s.name)+'" style="flex:1"><select data-spot-col="'+esc(s.id)+'" style="flex:0 0 140px">';
@@ -931,9 +977,10 @@ function renderSetup(){
 }
 
 /* events */
-document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button[data-tab]");if(!b)return;ui.tab=b.getAttribute("data-tab");ui.armed={};ui.pub=false;render();window.scrollTo(0,0);});
+document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button[data-tab]");if(!b)return;ui.tab=b.getAttribute("data-tab");ui.armed={};ui.pub=false;ui.namesEdit=null;ui.nmPin=false;render();window.scrollTo(0,0);});
 main.addEventListener("click",function(ev){
   var t=ev.target,b;
+  if(state.screen==="wizard"&&wiz){if(wizClick(ev))return;}
   if((b=t.closest("button[data-pick]"))){var sn=b.getAttribute("data-pick");var s=(state.stores.stores||[]).filter(function(x){return String(x.store_number)===sn;})[0];if(s)pickStore(s);return;}
   if(t.id==="reloadStores"){loadStores(true);return;}
   if(t.id==="switchStore"){switchStore();return;}
@@ -943,9 +990,13 @@ main.addEventListener("click",function(ev){
     var pinEl=document.getElementById("gmpin"),nameEl=document.getElementById("gmname");
     ui.pin=pinEl?pinEl.value.trim():"";ui.pinName=nameEl?nameEl.value.trim():"";
     if(!ui.pin){toast("Enter the GM PIN");return;}
-    toast("The setup walk-through lands in the next build. Your PIN and name are ready for it.");return;
+    wizStart();return;
   }
   if(t.id==="checkBtn"){toast("Checking…");syncSetup({manual:true});return;}
+  if(t.id==="nmAdd"){if(!ui.namesEdit)ui.namesEdit=baseNames();ui.namesEdit.push("");refreshNames();var last=main.querySelectorAll("[data-nm]");if(last.length)last[last.length-1].focus();return;}
+  if((b=t.closest("button[data-nmrm]"))){if(!ui.namesEdit)ui.namesEdit=baseNames();ui.namesEdit.splice(parseInt(b.getAttribute("data-nmrm"),10),1);refreshNames();return;}
+  if(t.id==="nmSave"){ui.nmPin=!ui.nmPin;refreshNames();return;}
+  if(t.id==="nmGo"){var np=document.getElementById("nmpin");saveNames(np?np.value.trim():"");return;}
   if(t.id==="pubBtn"){ui.pub=!ui.pub;render();return;}
   if(t.id==="pubGo"){var pe=document.getElementById("gmpin"),ne=document.getElementById("gmname"),te=document.getElementById("gmnote");ui.pin=pe?pe.value.trim():"";ui.pinName=ne?ne.value.trim():"";ui.pinNote=te?te.value.trim():"";publishSetup(ui.pin,ui.pinName,ui.pinNote);return;}
   if(t.id==="discardBtn"){if(!arm("discard"))return;discardDraft();return;}
@@ -995,10 +1046,12 @@ main.addEventListener("click",function(ev){
 });
 main.addEventListener("input",function(ev){
   var t=ev.target;
+  if(state.screen==="wizard"&&wiz){if(wizInput(ev))return;}
   if(t.id==="ssearch"){ui.ssearch=t.value;var pos0=t.selectionStart;renderPicker();var s0=document.getElementById("ssearch");if(s0){s0.focus();try{s0.setSelectionRange(pos0,pos0);}catch(e){}}return;}
   if(t.id==="gmpin"){ui.pin=t.value;return;}
   if(t.id==="gmname"){ui.pinName=t.value;return;}
   if(t.id==="gmnote"){ui.pinNote=t.value;return;}
+  if(t.hasAttribute("data-nm")){if(!ui.namesEdit)ui.namesEdit=baseNames();ui.namesEdit[parseInt(t.getAttribute("data-nm"),10)]=t.value;var sv=document.getElementById("nmSave");if(!sv)refreshNames();return;}
   if(!state.config)return;
   if(t.id==="search"){ui.search=t.value;var pos=t.selectionStart;renderSetup();var s2=document.getElementById("search");if(s2){s2.focus();try{s2.setSelectionRange(pos,pos);}catch(e){}}return;}
   if(t.id==="counter"){state.current.counter=t.value;lsSet(K("counter"),t.value);saveCurrent();var ch=main.querySelectorAll(".chips button");for(var c=0;c<ch.length;c++)ch[c].setAttribute("aria-pressed",ch[c].getAttribute("data-name")===t.value?"true":"false");return;}
@@ -1023,6 +1076,7 @@ main.addEventListener("input",function(ev){
   }
 });
 main.addEventListener("change",function(ev){
+  if(state.screen==="wizard"&&wiz){if(wizChange(ev))return;}
   if(!state.config)return;
   var t=ev.target,k;
   if((k=t.getAttribute("data-spot-col"))){var s=spot(k);if(s){s.col=t.value;saveConfig();}return;}
@@ -1037,6 +1091,7 @@ main.addEventListener("keydown",function(ev){
   var t=ev.target;
   if(t.id==="scode"){var g=document.getElementById("codeGo");if(g)g.click();}
   if(t.id==="gmpin"||t.id==="gmname"||t.id==="gmnote"){var b=document.getElementById("pubGo")||document.getElementById("startWizard");if(b)b.click();}
+  if(t.id==="nmpin"){var g2=document.getElementById("nmGo");if(g2)g2.click();}
 });
 function touchLine(l){
   var ov=state.current.overrides||{};
@@ -1223,6 +1278,428 @@ function restoreLast(){
 }
 function itemHasEntries(no){
   var ls=state.config.lines;for(var i=0;i<ls.length;i++){var l=ls[i];if(l.item===no||(l.extras&&l.extras.some(function(x){return x[0]===no;}))){if(lineValue(l,state.current.entries[l.id])!==null)return true;}}
+  return false;
+}
+
+/* ===== setup guide ===== */
+var KIND_OF={frz1:"freezer",frz2:"freezer",frz3:"freezer",walkin:"walkin",retarder:"retarder",boh:"dry",rack:"rack",make:"make",wingst:"wing",cut:"cut",lobby:"lobby",soda:"soda"};
+var KIND_COL={freezer:"freezer",walkin:"walkin",retarder:"walkin",cold:"walkin",dry:"boh",rack:"kitchen",make:"kitchen",under:"kitchen",wing:"kitchen",wingfrz:"kitchen",wingdry:"kitchen",cut:"kitchen",lobby:"foh",soda:"foh",other:"kitchen"};
+var KIND_WORD={freezer:"freezer",walkin:"walk-in",retarder:"retarder",dry:"dry storage",rack:"rack",make:"make table",wing:"Wing Street",cut:"cut table",lobby:"lobby",soda:"soda"};
+var WING_COLD={61:1,46:1,53:1,55:1};
+var DRINKS={80:1,81:1,82:1,83:1,84:1,85:1,86:1,87:1,88:1,89:1,90:1,91:1,92:1,93:1};
+var PAN_SIZES=[["hotel","Hotel"],["half","Half"],["third","Third"],["quarter","Quarter"],["sixth","Sixth"],["squeeze","Squeeze bottle"],["other","Other"]];
+var COLD_TYPES=["Retarder","Dough box","Dough drawer","Reach-in cooler","Pass-through cooler","Other"];
+var WIZ_STEPS=["Your store","Wing Street","Cut table, lobby, soda","Items on your sheet","Spots in walking order","What lives where","Make table","Anything homeless","Who counts","Review and publish"];
+var KB={byKind:{},byItem:{},bySrc:{}};
+(function(){
+  MASTER.lines.forEach(function(l){
+    var kind=KIND_OF[l.spot]||"other";
+    var t={item:l.item,name:l.name||"",label:l.label,type:l.type,factor:l.factor,loose:l.loose||null,extras:l.extras||null,fracs:l.fracs||null,nofull:!!l.nofull,kind:kind,src:l.id,srcSpot:l.spot};
+    (KB.byKind[kind]=KB.byKind[kind]||[]).push(t);(KB.byItem[l.item]=KB.byItem[l.item]||[]).push(t);KB.bySrc[l.id]=t;
+  });
+})();
+function mItem(no){for(var i=0;i<MASTER.items.length;i++)if(MASTER.items[i].no===no)return MASTER.items[i];return null;}
+function tplLine(t,spotId){return {spot:spotId,item:t.item,name:t.name||null,label:t.label,type:t.type,factor:t.factor,loose:t.loose||null,extras:t.extras?clone(t.extras):null,fracs:t.fracs?clone(t.fracs):null,nofull:!!t.nofull};}
+function panSizeOf(label){var s=String(label||"").toLowerCase();if(s.indexOf("hotel")>=0)return "hotel";if(s.indexOf("half pan")>=0||s.indexOf("half pans")>=0)return "half";if(s.indexOf("third")>=0)return "third";if(s.indexOf("quarter")>=0)return "quarter";if(s.indexOf("sixth")>=0)return "sixth";if(s.indexOf("squeeze")>=0)return "squeeze";return "other";}
+function panWord(size){for(var i=0;i<PAN_SIZES.length;i++)if(PAN_SIZES[i][0]===size)return PAN_SIZES[i][1];return "Pan";}
+
+var wiz=null;
+function wizDefault(){return {step:0,a:{service:"",frz:"",frzN:1,cold:"",coldN:1,coldTypes:[],dryN:1,dryNames:[],mtN:1,mtLen:["10"],under:[],rack:"",wsN:1,wsExtra:[],wsDry:"",wsd:{sauces:"",rubs:"",bowls:false,trays:false,sixth:false,myhut:false,other:[]},cutOff:{},cutExtra:[],lobbyOff:{},lobbyCased:{},lobbyExtra:[],soda:"",sodaRoom:{}},items:{},extras:[],spots:null,lines:null,rail:null,names:null,next:1,csearch:"",hsearch:"",wspot:"",open:null,addMode:null,addQ:"",addPick:null,hpick:null,hspot:"",saving:false};}
+function wizLoad(){var w=lsGet(K("wiz"));wiz=w&&w.a?w:wizDefault();if(!wiz.a.wsd)wiz.a.wsd={sauces:"",rubs:"",bowls:false,trays:false,sixth:false,myhut:false,other:[]};}
+function wizSave(){lsSet(K("wiz"),wiz);}
+function wizItems(){var out=MASTER.items.filter(function(it){return wiz.items[it.no]!==false;}).map(function(it){return clone(it);});(wiz.extras||[]).forEach(function(x){out.push({no:x.no,sheet:x.sheet,unit:x.unit,crew:x.crew,zero:false});});return out.sort(function(a,b){return a.no-b.no;});}
+function wizItem(no){var its=wizItems();for(var i=0;i<its.length;i++)if(its[i].no===no)return its[i];return null;}
+function wizSpot(id){var s=wiz.spots||[];for(var i=0;i<s.length;i++)if(s[i].id===id)return s[i];return null;}
+function wizLine(id){var l=wiz.lines||[];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];return null;}
+function wizLinesIn(spotId){return (wiz.lines||[]).filter(function(l){return l.spot===spotId;});}
+function wizAdd(t,spotId){var l=tplLine(t,spotId);l.id="w"+(wiz.next++);wiz.lines.push(l);return l;}
+function wizAddSrc(ids,spotId){ids.forEach(function(src){var t=KB.bySrc[src];if(t)wizAdd(t,spotId);});}
+function firstTpl(no,kinds){for(var k=0;k<kinds.length;k++){var ts=KB.byItem[no]||[];for(var i=0;i<ts.length;i++)if(ts[i].kind===kinds[k])return ts[i];}return null;}
+function genericTpl(no,how){var it=wizItem(no)||mItem(no)||{unit:"EACH"};var u=String(it.unit||"").toLowerCase();if(how==="case")return {item:no,name:"",label:"cases (set how many "+u+" per case)",type:"case",factor:1,loose:"loose",kind:"other"};if(how==="pan")return {item:no,name:"",label:"pan, how full (set what a full pan holds)",type:"pan",factor:1,nofull:true,kind:"other"};return {item:no,name:"",label:u||"each",type:"each",factor:1,kind:"other"};}
+
+function wizGenerate(){
+  var a=wiz.a;wiz.spots=[];wiz.lines=[];wiz.next=1;wiz.rail=null;
+  var spots=wiz.spots;
+  function addSpot(id,name,kind){spots.push({id:id,name:name,col:KIND_COL[kind]||"kitchen",kind:kind});return id;}
+  function addKind(kind,spotId,filter){(KB.byKind[kind]||[]).forEach(function(t){if(!filter||filter(t))wizAdd(t,spotId);});}
+  /* freezers */
+  var firstFrz=null;
+  if(a.frz==="walkin"||a.frz==="both"){addSpot("wfrz","Walk-in freezer","freezer");firstFrz="wfrz";}
+  var standN=(a.frz==="stand"||a.frz==="both")?Math.max(1,parseInt(a.frzN,10)||1):0;
+  for(var i=1;i<=standN;i++){addSpot("frz"+i,"Freezer "+i,"freezer");if(!firstFrz)firstFrz="frz"+i;}
+  if(!firstFrz){addSpot("frz1","Freezer 1","freezer");firstFrz="frz1";}
+  if(a.frz==="stand"){
+    var mapTo={frz1:"frz1",frz2:standN>=2?"frz1":"frz1",frz3:standN>=3?"frz3":(standN===2?"frz2":"frz1")};
+    if(standN>=3)mapTo={frz1:"frz1",frz2:"frz2",frz3:"frz3"};
+    addKind("freezer",null);wiz.lines=[];wiz.next=1;
+    (KB.byKind.freezer||[]).forEach(function(t){wizAdd(t,mapTo[t.srcSpot]||"frz1");});
+  } else addKind("freezer","wfrz");
+  /* walk-in and other cold */
+  var firstCold=null;
+  if(a.cold==="walkin"||a.cold==="both"){addSpot("walkin","Walk-in","walkin");firstCold="walkin";}
+  var coldN=(a.cold==="stand"||a.cold==="both")?Math.max(1,parseInt(a.coldN,10)||1):0;
+  var typeCount={};
+  for(var c=1;c<=coldN;c++){
+    var ty=a.coldTypes[c-1]||"Reach-in cooler";typeCount[ty]=(typeCount[ty]||0)+1;
+    var id="cold"+c;var kind=ty==="Retarder"?"retarder":"cold";
+    addSpot(id,ty,kind);if(!firstCold)firstCold=id;
+  }
+  Object.keys(typeCount).forEach(function(ty){if(typeCount[ty]>1){var k=0;spots.forEach(function(s){if(s.name===ty){k++;s.name=ty+" "+k;}});}});
+  if(!firstCold){addSpot("walkin","Walk-in","walkin");firstCold="walkin";}
+  addKind("walkin",firstCold);
+  var ret=spots.filter(function(s){return s.kind==="retarder";})[0];
+  if(ret)addKind("retarder",ret.id);
+  /* dry storage */
+  var dryN=Math.max(1,parseInt(a.dryN,10)||1);
+  for(var d=1;d<=dryN;d++)addSpot("dry"+d,(a.dryNames[d-1]||"").trim()||("Dry storage"+(dryN>1?" "+d:"")),"dry");
+  addKind("dry","dry1");
+  /* rack */
+  if(a.rack==="yes"){addSpot("rack","Make table rack","rack");addKind("rack","rack");}
+  else addKind("rack","dry1",function(t){return t.type==="case"||t.item===7||t.item===12||t.item===16||t.item===15||t.item===62||t.item===49||t.item===50||t.item===51||t.item===56||t.item===60||t.item===72;});
+  /* make table */
+  var mtN=Math.max(1,parseInt(a.mtN,10)||1);
+  for(var m=1;m<=mtN;m++)addSpot(m===1?"make":"make"+m,m===1?"Make table":"Make table "+m,"make");
+  addKind("make","make");
+  var under=(a.under||[]).filter(function(x){return x!=="none";});
+  if(under.length){
+    addSpot("under","Under make table","under");
+    if(under.indexOf("portioned")>=0)wizAddSrc(["l36","l223","l67"],"under");
+    if(under.indexOf("lexans")>=0)(KB.byKind.walkin||[]).forEach(function(t){if(/lexan/i.test(t.label)||/lexan/i.test(t.name))wizAdd(t,"under");});
+    if(under.indexOf("binned")>=0)wizAddSrc(["l51","l52","l53","l57","l58","l59","l50","l62","l70","l71","l73"],"under");
+    if(under.indexOf("cases")>=0)wizAddSrc(["l68","l69"],"under");
+  }
+  /* Wing Street */
+  addSpot("wing","Wing Street","wing");
+  (KB.byKind.wing||[]).forEach(function(t){if(t.type==="pan")wizAdd(t,"wing");});
+  var wsN=Math.max(0,parseInt(a.wsN,10)||0);
+  var wsCold=wsN?"wfz1":firstFrz;
+  for(var w=1;w<=wsN;w++)addSpot("wfz"+w,"Wing Street freezer"+(wsN>1?" "+w:""),"wingfrz");
+  wizAddSrc(["l226","l234"],wsCold);
+  if(wsN)wizAddSrc(["l15","l16","l9","l22"],wsCold);
+  (a.wsExtra||[]).forEach(function(no){var t=firstTpl(no,["freezer","walkin"])||genericTpl(no,"each");wizAdd(t,wsCold);});
+  if(a.wsDry==="yes"){
+    addSpot("wdry","Wing Street dry","wingdry");var sd=a.wsd||{};
+    if(sd.sauces==="cases")wizAddSrc(["l117","l114","l115","l116","l118","l119"],"wdry");
+    else if(sd.sauces==="bags")wizAddSrc(["l165","l166","l167","l168","l169","l170"],"wdry");
+    if(sd.rubs)wizAddSrc(["l163","l164"],"wdry");
+    if(sd.bowls)wizAddSrc(["l171","l172"],"wdry");
+    if(sd.trays)wizAddSrc(["l264"],"wdry");
+    if(sd.myhut)wizAddSrc(["l252"],"wdry");
+    (sd.other||[]).forEach(function(no){var t=firstTpl(no,["dry","rack","cut","wing"])||genericTpl(no,"each");wizAdd(t,"wdry");});
+  } else {
+    wizAddSrc(["l163","l164"],"wing");
+  }
+  /* cut table */
+  addSpot("cut","Cut table","cut");
+  (KB.byKind.cut||[]).forEach(function(t){if(!a.cutOff[t.src])wizAdd(t,"cut");});
+  (a.cutExtra||[]).forEach(function(no){var t=firstTpl(no,["cut","rack","dry"])||genericTpl(no,"each");wizAdd(t,"cut");});
+  /* lobby */
+  addSpot("lobby","Lobby","lobby");
+  (KB.byKind.lobby||[]).forEach(function(t){if(a.lobbyOff[t.src])return;if(a.lobbyCased[t.item]){var ct=firstTpl(t.item,["dry","rack"]);if(ct&&ct.type==="case"){wizAdd(ct,"lobby");return;}}wizAdd(t,"lobby");});
+  (a.lobbyExtra||[]).forEach(function(no){var t=(a.lobbyCased[no]?(firstTpl(no,["dry","rack"])||genericTpl(no,"case")):(firstTpl(no,["lobby","cut"])||genericTpl(no,"each")));wizAdd(t,"lobby");});
+  /* soda */
+  var drinkTpls=(KB.byKind.soda||[]).filter(function(t){return DRINKS[t.item];});
+  if(a.soda==="cooler"||a.soda==="both"){addSpot("sodac","Soda coolers","soda");drinkTpls.forEach(function(t){wizAdd(t,"sodac");});}
+  if(a.soda==="fountain"||a.soda==="both"){addSpot("fount","Fountain","soda");}
+  Object.keys(a.sodaRoom||{}).forEach(function(sid){if(!a.sodaRoom[sid]||!wizSpot(sid))return;drinkTpls.forEach(function(t){wizAdd(t,sid);});});
+  /* drop lines for items not on the sheet */
+  var have={};wizItems().forEach(function(it){have[it.no]=true;});
+  wiz.lines=wiz.lines.filter(function(l){return have[l.item];});
+  wiz.generated=true;wizBuildRail();wizSave();
+}
+function wizBuildRail(){
+  var pans=[];wizLinesIn("make").forEach(function(l){if(l.type==="pan")pans.push({row:1,size:panSizeOf(l.label),line:l.id});});
+  wiz.rail={rows:1,pans:pans};
+}
+function wizSetup(){
+  var items=wizItems();var have={};items.forEach(function(it){have[it.no]=true;});
+  var lines=[];var n=0;
+  (wiz.lines||[]).forEach(function(l){if(!have[l.item]||!wizSpot(l.spot))return;var c=clone(l);c.id="l"+(++n);lines.push(c);});
+  return {version:1,rev:MASTER.rev,storeEmail:"",spots:(wiz.spots||[]).map(function(s){return {id:s.id,name:s.name,col:s.col};}),items:items,lines:lines};
+}
+function wizHomeless(){var covered={};(wiz.lines||[]).forEach(function(l){covered[l.item]=true;if(l.extras)l.extras.forEach(function(x){covered[x[0]]=true;});});return wizItems().filter(function(it){return !it.zero&&!covered[it.no];});}
+function wizLineDesc(l){var it=wizItem(l.item)||mItem(l.item);var u=it?it.unit.toLowerCase():"";if(l.type==="toggle")return "yes adds "+fmt(l.factor)+" "+u;if(l.type==="pan")return l.label+(l.nofull?"":" × "+fmt(l.factor));if(l.type==="case")return l.label+" = "+fmt(l.factor)+" "+u+", + "+(l.loose||"loose");return l.label+(l.factor!==1?" × "+fmt(l.factor):"");}
+
+/* --- render --- */
+function chip(name,val,cur,label){return '<button type="button" data-wc="'+esc(name)+'" data-v="'+esc(val)+'" aria-pressed="'+(String(cur)===String(val)?"true":"false")+'">'+esc(label)+'</button>';}
+function chips(name,cur,opts){var h='<div class="chips">';opts.forEach(function(o){h+=chip(name,o[0],cur,o[1]);});return h+'</div>';}
+function stepper(name,val,min,max){return '<div class="chips" style="align-items:center"><button type="button" data-ws="'+name+'" data-d="-1">−</button><b style="min-width:28px;text-align:center;font-size:18px">'+val+'</b><button type="button" data-ws="'+name+'" data-d="1">+</button></div>';}
+function wizHead(){var n=wiz.step;var h='<div class="sec" style="padding-top:10px"><p style="margin:0"><b style="color:var(--ink)">Setup guide, step '+(n+1)+' of '+WIZ_STEPS.length+'</b>: '+esc(WIZ_STEPS[n])+'. Saves as you go.</p></div>';return h;}
+function wizNav(nextLabel){return '<div class="sec"><div class="acts">'+(wiz.step>0?'<button class="btn ghost" id="wBack">Back</button>':'<button class="btn ghost" id="wExit">Exit guide</button>')+'<button class="btn" id="wNext">'+esc(nextLabel||"Next")+'</button></div></div>';}
+function renderWizard(){
+  var h=wizHead();var a=wiz.a;
+  if(wiz.step===0){
+    h+='<div class="sec"><h2>Q1. Service</h2>'+chips("service",a.service,[["dine","Dine-in"],["carry","Carryout and delivery"]])+'</div>';
+    h+='<div class="sec"><h2>Q2. Freezers</h2>'+chips("frz",a.frz,[["walkin","Walk-in freezer"],["stand","Standalone freezers"],["both","Both"]]);
+    if(a.frz==="stand")h+='<p>How many standalone?</p>'+stepper("frzN",a.frzN,1,6);
+    if(a.frz==="both")h+='<p>The walk-in plus how many standalone?</p>'+stepper("frzN",a.frzN,1,6);
+    h+='</div>';
+    h+='<div class="sec"><h2>Q3. Refrigeration</h2>'+chips("cold",a.cold,[["walkin","Walk-in cooler"],["stand","Standalone coolers"],["both","Both"]]);
+    if(a.cold==="stand"||a.cold==="both"){
+      h+='<p>'+(a.cold==="both"?'Beyond the walk-in, how many?':'How many?')+' Count the make table retarder, dough boxes and dough drawers. Don\'t count soda fridges or the cold wells under the make table.</p>'+stepper("coldN",a.coldN,1,6);
+      for(var c=0;c<(parseInt(a.coldN,10)||1);c++){h+='<p style="margin-bottom:4px">Unit '+(c+1)+' is a:</p><div class="chips">';COLD_TYPES.forEach(function(ty){h+='<button type="button" data-wct="'+c+'" data-v="'+esc(ty)+'" aria-pressed="'+((a.coldTypes[c]||"")===ty?"true":"false")+'">'+esc(ty)+'</button>';});h+='</div>';}
+    }
+    h+='</div>';
+    h+='<div class="sec"><h2>Q4. Dry storage</h2><p>How many areas?</p>'+stepper("dryN",a.dryN,1,4);
+    for(var d=0;d<(parseInt(a.dryN,10)||1);d++)h+='<div class="field"><label>Area '+(d+1)+'</label><input type="text" data-wdry="'+d+'" value="'+esc(a.dryNames[d]||"")+'" placeholder="What the crew calls it"></div>';
+    h+='</div>';
+    h+='<div class="sec"><h2>Q5. Make table</h2><p>How many?</p>'+stepper("mtN",a.mtN,1,2);
+    h+='<p>Length</p>'+chips("mtLen0",a.mtLen[0]||"",[["8","8 ft"],["10","10 ft"],["12","12 ft"]]);
+    h+='<p>Under it, what\'s stored there? Tap all that apply.</p><div class="chips">';
+    [["portioned","Portioned products"],["lexans","Lexan backups"],["binned","Binned backups"],["cases","Sealed cases"],["none","Nothing"]].forEach(function(o){h+='<button type="button" data-wm="under" data-v="'+o[0]+'" aria-pressed="'+((a.under||[]).indexOf(o[0])>=0?"true":"false")+'">'+o[1]+'</button>';});
+    h+='</div><p>Is there a rack or shelf next to it with backups?</p>'+chips("rack",a.rack,[["yes","Yes"],["no","No"]])+'</div>';
+    h+=wizNav();
+  } else if(wiz.step===1){
+    h+='<div class="sec"><h2>Q6. Wing Street cold</h2><p>How many Wing Street freezers or fridges?</p>'+stepper("wsN",a.wsN,0,4);
+    h+='<p>Besides traditional wings, boneless wings, cheese sticks and fries, anything else kept in them? Tap to add.</p>'+wizItemPicker("wsExtra",a.wsExtra,function(it){return !WING_COLD[it.no]&&(firstTpl(it.no,["freezer","walkin"])!==null);})+'</div>';
+    h+='<div class="sec"><h2>Q7. Wing Street dry</h2><p>Is there Wing Street dry storage?</p>'+chips("wsDry",a.wsDry,[["yes","Yes"],["no","No"]]);
+    if(a.wsDry==="yes"){var sd=a.wsd;
+      h+='<p>What\'s kept there and how?</p>';
+      h+='<p style="margin-bottom:4px">Sauces</p>'+chips("wsd.sauces",sd.sauces,[["cases","Cases"],["bags","Bags or pouches"],["","Not here"]]);
+      h+='<p style="margin-bottom:4px">Dry rubs</p>'+chips("wsd.rubs",sd.rubs,[["packets","Packets"],["cases","Cases"],["","Not here"]]);
+      h+='<div class="chips">';
+      [["bowls","Wing bowls, small and large"],["trays","Hut box trays"],["sixth","Sauces in sixth pans"],["myhut","My Hut boxes"]].forEach(function(o){h+='<button type="button" data-wsd="'+o[0]+'" aria-pressed="'+(sd[o[0]]?"true":"false")+'">'+o[1]+'</button>';});
+      h+='</div><p>Other, tap to add:</p>'+wizItemPicker("wsd.other",sd.other,function(it){return !DRINKS[it.no];});
+    }
+    h+='</div>';
+    h+=wizNav();
+  } else if(wiz.step===2){
+    h+='<div class="sec"><h2>Q8. Cut table</h2><p>This is what Wadsworth keeps at the cut table. Unbubble what isn\'t at yours.</p>'+wizBubbleList("cutOff",KB.byKind.cut||[])+'<p>Anything at the cut table that wasn\'t on that list? Tap to add.</p>'+wizItemPicker("cutExtra",a.cutExtra,null)+'</div>';
+    h+='<div class="sec"><h2>Q9. Lobby</h2><p>Unbubble what isn\'t stored in your lobby. Tap "cased" if it sits there in full cases.</p>'+wizBubbleList("lobbyOff",KB.byKind.lobby||[],true)+'<p>Anything else in the lobby? Tap to add, then mark cased if needed.</p>'+wizItemPicker("lobbyExtra",a.lobbyExtra,null,true)+'</div>';
+    h+='<div class="sec"><h2>Q10. Soda</h2>'+chips("soda",a.soda,[["cooler","Bottle coolers"],["fountain","Fountain machine"],["both","Both"]])+'<p>Where else are sodas kept at room temp?</p><div class="chips">';
+    for(var d2=0;d2<(parseInt(a.dryN,10)||1);d2++){var sid="dry"+(d2+1);h+='<button type="button" data-wroom="'+sid+'" aria-pressed="'+(a.sodaRoom[sid]?"true":"false")+'">'+esc((a.dryNames[d2]||"").trim()||("Dry storage "+(d2+1)))+'</button>';}
+    h+='<button type="button" data-wroom="lobby" aria-pressed="'+(a.sodaRoom.lobby?"true":"false")+'">Lobby</button></div></div>';
+    h+=wizNav();
+  } else if(wiz.step===3){
+    h+='<div class="sec"><h2>Items on your sheet</h2><p>Every item on the Flynn count sheet, in computer order, plain names underneath. Unbubble what this store doesn\'t carry. Add anything on your sheet that isn\'t here.</p><input class="search" type="text" id="wisearch" placeholder="Search" value="'+esc(wiz.csearch||"")+'"></div>';
+    var q=(wiz.csearch||"").trim().toLowerCase();
+    wizItems().forEach(function(it){});
+    MASTER.items.concat((wiz.extras||[]).map(function(x){return {no:x.no,sheet:x.sheet,unit:x.unit,crew:x.crew,extra:true};})).sort(function(x,y){return x.no-y.no;}).forEach(function(it){
+      if(q&&it.crew.toLowerCase().indexOf(q)<0&&it.sheet.toLowerCase().indexOf(q)<0)return;
+      var on=it.extra?true:wiz.items[it.no]!==false;
+      h+='<button class="erow'+(on?' entered':'')+'" data-witem="'+it.no+'"><span class="tick">'+(on?'&#10003;':'')+'</span><span class="no">'+(it.extra?'+':it.no)+'</span><span class="en">'+esc(it.sheet)+'<small>'+esc(it.crew)+' · '+esc(it.unit)+'</small></span>'+(it.extra?'<span class="tag">added</span>':'')+'</button>';
+    });
+    h+='<div class="sec"><h2>Add an item</h2><div class="field"><label>Sheet name</label><input type="text" id="wxsheet" placeholder="As printed"></div><div class="field"><label>Plain name</label><input type="text" id="wxcrew" placeholder="What the crew calls it"></div><div class="field"><label>Unit</label><select id="wxunit"><option>EACH</option><option>LB</option><option>CASE</option><option>POUCH</option><option>BAG</option><option>GAL</option><option>BOTTLE</option><option>BOX</option><option>SLEEVE</option></select></div><div class="field"><label>Goes after</label><select id="wxafter">';
+    MASTER.items.forEach(function(it){h+='<option value="'+it.no+'">'+it.no+' '+esc(it.sheet)+'</option>';});
+    h+='</select></div><div class="acts"><button class="btn ghost sm" id="wxAdd">Add item</button></div></div>';
+    h+=wizNav();
+  } else if(wiz.step===4){
+    if(!wiz.generated)wizGenerate();
+    h+='<div class="sec"><h2>Spots in walking order</h2><p>Built from your answers. Rename anything, put them in the order you walk the store, add or remove. The column is where the spot lands on the printed sheet.</p></div>';
+    wiz.spots.forEach(function(s,i){
+      h+='<div class="field"><input type="text" data-wsn="'+esc(s.id)+'" value="'+esc(s.name)+'" style="flex:1"><select data-wscol="'+esc(s.id)+'" style="flex:0 0 118px">';
+      COLS.forEach(function(c){h+='<option value="'+c[0]+'"'+(s.col===c[0]?' selected':'')+'>'+c[1]+'</option>';});
+      h+='</select></div><div class="acts" style="margin-top:-2px"><button class="btn ghost sm" data-wsup="'+esc(s.id)+'"'+(i===0?' disabled':'')+'>Up</button><button class="btn ghost sm" data-wsdown="'+esc(s.id)+'"'+(i===wiz.spots.length-1?' disabled':'')+'>Down</button><button class="btn danger sm" data-wsrm="'+esc(s.id)+'">'+(ui.armed["wsrm"+s.id]?'Tap again, '+wizLinesIn(s.id).length+' lines go too':'Remove')+'</button><span class="lab">'+wizLinesIn(s.id).length+' lines</span></div>';
+    });
+    h+='<div class="sec"><div class="acts"><button class="btn ghost sm" id="wsAdd">Add a spot</button><button class="btn danger sm" id="wsRebuild">'+(ui.armed.wsRebuild?'Tap again, this wipes edits':'Rebuild from answers')+'</button></div></div>';
+    h+=wizNav();
+  } else if(wiz.step===5){
+    if(!wizSpot(wiz.wspot))wiz.wspot=wiz.spots[0].id;
+    h+='<div class="sec"><h2>What lives where</h2><p>Walk each spot. Every line is one thing to count and how it converts. Tap a line to change it or delete it. Add what\'s missing.</p></div>';
+    h+='<div class="spots" style="position:static">';wiz.spots.forEach(function(s){h+='<button data-wpick="'+esc(s.id)+'" aria-selected="'+(wiz.wspot===s.id?"true":"false")+'">'+esc(s.name)+'<small>'+wizLinesIn(s.id).length+'</small></button>';});h+='</div>';
+    var ls=wizLinesIn(wiz.wspot);
+    if(!ls.length)h+='<div class="empty-msg">Nothing here yet. Add what lives in this spot below.</div>';
+    ls.forEach(function(l,idx){
+      var it=wizItem(l.item)||mItem(l.item);var open=wiz.open===l.id;
+      h+='<div class="irow"><button class="ihead" data-wopen="'+esc(l.id)+'"><span class="n">'+esc(l.name||(it?it.crew:"?"))+'<small>'+esc(wizLineDesc(l))+'</small></span><span class="chev">'+(open?'&#9650;':'&#9660;')+'</span></button>';
+      if(open)h+=wizLineEditor(l,idx,ls.length);
+      h+='</div>';
+    });
+    h+='<div class="sec"><h2>Add to '+esc(wizSpot(wiz.wspot).name)+'</h2><input class="search" type="text" id="waddq" placeholder="Search items" value="'+esc(wiz.addQ||"")+'">';
+    var aq=(wiz.addQ||"").trim().toLowerCase();
+    if(aq){wizItems().forEach(function(it){if(it.crew.toLowerCase().indexOf(aq)<0&&it.sheet.toLowerCase().indexOf(aq)<0)return;h+='<button class="erow" data-waddpick="'+it.no+'"><span class="no">'+it.no+'</span><span class="en">'+esc(it.crew)+'<small>'+esc(it.sheet)+' · '+esc(it.unit)+'</small></span><span class="tag">'+(wiz.addPick===it.no?'pick how':'add')+'</span></button>';
+      if(wiz.addPick===it.no){
+        h+='<div class="iedit"><p>How is it stored here?</p><div class="chips">';
+        (KB.byItem[it.no]||[]).forEach(function(t,ti){h+='<button type="button" data-waddtpl="'+ti+'">'+esc(t.label)+' <small>('+esc(KIND_WORD[t.kind]||t.kind)+')</small></button>';});
+        h+='<button type="button" data-waddgen="each">Count each</button><button type="button" data-waddgen="case">Cases plus loose</button><button type="button" data-waddgen="pan">Pan by fullness</button></div></div>';
+      }
+    });}
+    h+='</div>';
+    h+=wizNav();
+  } else if(wiz.step===6){
+    if(!wiz.rail)wizBuildRail();
+    var r=wiz.rail;
+    h+='<div class="sec"><h2>Make table</h2><p>The rail, left to right. Rows front to back. Each pan is one line, counted by how full it is. Tap a pan to change its size or what a full one holds.</p><p>Rows on the rail</p>'+chips("rail.rows",r.rows,[["1","1 row"],["2","2 rows"]])+'</div>';
+    for(var row=1;row<=r.rows;row++){
+      h+='<div class="sec" style="padding-bottom:0"><h2>Row '+row+(r.rows>1?(row===1?', front':', back'):'')+'</h2></div>';
+      var pans=r.pans.filter(function(p){return p.row===row;});
+      if(!pans.length)h+='<div class="empty-msg">No pans in this row yet.</div>';
+      pans.forEach(function(p){
+        var l=wizLine(p.line);if(!l)return;var it=wizItem(l.item)||mItem(l.item);var open=wiz.open===l.id;
+        h+='<div class="irow"><button class="ihead" data-wopen="'+esc(l.id)+'"><span class="n">'+esc(panWord(p.size))+': '+esc(l.name||(it?it.crew:"?"))+'<small>full = '+fmt(l.factor)+' '+esc(it?it.unit.toLowerCase():"")+'. '+esc(l.label)+'</small></span><span class="chev">'+(open?'&#9650;':'&#9660;')+'</span></button>';
+        if(open){
+          h+='<div class="iedit" data-wedit="'+esc(l.id)+'"><p>Pan size</p><div class="chips">';PAN_SIZES.forEach(function(ps){h+='<button type="button" data-wpsize="'+ps[0]+'" aria-pressed="'+(p.size===ps[0]?"true":"false")+'">'+ps[1]+'</button>';});h+='</div>';
+          h+='<div class="field"><label>Full pan holds</label><input class="num" type="text" inputmode="decimal" data-k="factor" value="'+esc(l.factor)+'"><span class="lab">'+esc(it?it.unit.toLowerCase():"")+'</span></div>';
+          h+='<div class="field"><label>Label</label><input type="text" data-k="label" value="'+esc(l.label)+'"></div>';
+          h+='<div class="field"><label>Row</label>'+chips("pan.row."+l.id,p.row,[["1","1"],["2","2"]])+'</div>';
+          h+='<div class="acts"><button class="btn ghost sm" data-wpleft>Left</button><button class="btn ghost sm" data-wpright>Right</button><button class="btn danger sm" data-wremove>'+(ui.armed["wrm"+l.id]?'Tap again to delete':'Delete pan')+'</button></div></div>';
+        }
+        h+='</div>';
+      });
+    }
+    h+='<div class="sec"><h2>Add a pan</h2><input class="search" type="text" id="waddq" placeholder="Search items" value="'+esc(wiz.addQ||"")+'">';
+    var pq=(wiz.addQ||"").trim().toLowerCase();
+    if(pq){wizItems().forEach(function(it){if(it.crew.toLowerCase().indexOf(pq)<0&&it.sheet.toLowerCase().indexOf(pq)<0)return;h+='<button class="erow" data-waddpick="'+it.no+'"><span class="no">'+it.no+'</span><span class="en">'+esc(it.crew)+'<small>'+esc(it.sheet)+' · '+esc(it.unit)+'</small></span><span class="tag">'+(wiz.addPick===it.no?'pick a size':'add')+'</span></button>';
+      if(wiz.addPick===it.no){h+='<div class="iedit"><div class="chips">';PAN_SIZES.forEach(function(ps){h+='<button type="button" data-wpanadd="'+ps[0]+'">'+ps[1]+'</button>';});h+='</div></div>';}
+    });}
+    h+='</div>';
+    h+=wizNav();
+  } else if(wiz.step===7){
+    var hl=wizHomeless();
+    h+='<div class="sec"><h2>Anything homeless</h2><p>'+(hl.length?hl.length+' items on your sheet have no spot yet. Tap one, say where it lives and how it\'s stored. Or mark it "always 0" if you never carry it.':'Every item on your sheet has a home. Nice.')+'</p></div>';
+    hl.forEach(function(it){
+      var open=wiz.hpick===it.no;
+      h+='<button class="erow" data-whpick="'+it.no+'"><span class="no">'+it.no+'</span><span class="en">'+esc(it.crew)+'<small>'+esc(it.sheet)+' · '+esc(it.unit)+'</small></span><span class="tag">'+(open?'where?':'place it')+'</span></button>';
+      if(open){
+        h+='<div class="iedit"><p>Where does it live?</p><div class="chips">';wiz.spots.forEach(function(s){h+='<button type="button" data-whspot="'+esc(s.id)+'" aria-pressed="'+(wiz.hspot===s.id?"true":"false")+'">'+esc(s.name)+'</button>';});h+='</div>';
+        if(wiz.hspot){h+='<p>How is it stored there?</p><div class="chips">';(KB.byItem[it.no]||[]).forEach(function(t,ti){h+='<button type="button" data-whtpl="'+ti+'">'+esc(t.label)+' <small>('+esc(KIND_WORD[t.kind]||t.kind)+')</small></button>';});h+='<button type="button" data-whgen="each">Count each</button><button type="button" data-whgen="case">Cases plus loose</button><button type="button" data-whgen="pan">Pan by fullness</button></div>';}
+        h+='<div class="acts"><button class="btn danger sm" data-whzero="'+it.no+'">Always 0, we don\'t carry it</button></div></div>';
+      }
+    });
+    h+=wizNav(hl.length?"Next anyway":"Next");
+  } else if(wiz.step===8){
+    if(!wiz.names)wiz.names=baseNames();
+    h+='<div class="sec"><h2>Who counts</h2><p>The names on the Counted by chips. The GM first. '+esc(AD_NAME)+' is always last. Add and remove as people come and go; it can be changed later on the Setup tab.</p>';
+    wiz.names.forEach(function(n,i){h+='<div class="field"><input type="text" data-wnm="'+i+'" value="'+esc(n)+'" placeholder="Name"><button class="btn danger sm" data-wnmrm="'+i+'">Remove</button></div>';});
+    h+='<div class="field"><input type="text" disabled value="'+esc(AD_NAME)+'"><span class="lab">always last</span></div><div class="acts"><button class="btn ghost sm" id="wnmAdd">Add name</button></div></div>';
+    h+=wizNav();
+  } else {
+    var st=wizSetup();var hl2=wizHomeless();
+    h+='<div class="sec"><h2>Review and publish</h2><p><b style="color:var(--ink)">'+esc(storeLabel())+'</b>: '+st.spots.length+' spots, '+st.items.length+' items on the sheet, '+st.lines.length+' count lines'+(hl2.length?', <b style="color:var(--warn)">'+hl2.length+' items still homeless</b> (they show on the sheet with no line until someone places them)':'')+'.</p>';
+    st.spots.forEach(function(s){h+='<p style="margin-bottom:3px"><b style="color:var(--ink)">'+esc(s.name)+'</b>: '+st.lines.filter(function(l){return l.spot===s.id;}).length+' lines</p>';});
+    h+='</div><div class="sec"><p>Publishing locks this as version 1 for every phone that picks this store. Anything can be changed later on the Setup tab and published as the next version.</p>';
+    if(!ui.pin)h+='<div class="field"><label>GM PIN</label><input type="password" inputmode="numeric" id="gmpin" autocomplete="off"></div>';
+    h+='<div class="acts"><button class="btn ghost" id="wBack">Back</button><button class="btn" id="wPublish"'+(wiz.saving?' disabled':'')+'>'+(wiz.saving?'Publishing…':'Publish version 1')+'</button></div></div>';
+  }
+  main.innerHTML=h;
+}
+function wizItemPicker(field,picked,filter,cased){
+  var h='<div class="chips">';(picked||[]).forEach(function(no){var it=wizItem(no)||mItem(no);if(!it)return;h+='<button type="button" data-wpx="'+esc(field)+'" data-v="'+no+'" aria-pressed="true">'+esc(it.crew)+(cased?(wiz.a.lobbyCased[no]?' · cased':' · individual'):'')+' ✕</button>';});h+='</div>';
+  h+='<select data-wpsel="'+esc(field)+'"><option value="">Tap to add…</option>';
+  wizItems().forEach(function(it){if((picked||[]).indexOf(it.no)>=0)return;if(filter&&!filter(it))return;h+='<option value="'+it.no+'">'+esc(it.crew)+' ('+esc(it.sheet)+')</option>';});
+  h+='</select>';
+  if(cased&&(picked||[]).length)h+='<p style="margin-top:6px">Tap a name above to switch it between individual and cased.</p>';
+  return h;
+}
+function wizBubbleList(offField,tpls,cased){
+  var h='';
+  tpls.forEach(function(t){var it=wizItem(t.item)||mItem(t.item);if(!it)return;var on=!wiz.a[offField][t.src];
+    h+='<button class="erow'+(on?' entered':'')+'" data-wbub="'+esc(offField)+'" data-v="'+esc(t.src)+'"><span class="tick">'+(on?'&#10003;':'')+'</span><span class="en">'+esc(it.crew)+'<small>'+esc(t.label)+'</small></span>'+(cased&&on?'<span class="tag" data-wcased="'+t.item+'">'+(wiz.a.lobbyCased[t.item]?'cased':'individual')+'</span>':'')+'</button>';});
+  return h;
+}
+function wizLineEditor(l,idx,n){
+  var it=wizItem(l.item)||mItem(l.item);var h='<div class="iedit" data-wedit="'+esc(l.id)+'">';
+  h+='<div class="field"><label>Item</label><select data-k="item">';wizItems().forEach(function(i2){h+='<option value="'+i2.no+'"'+(i2.no===l.item?' selected':'')+'>'+i2.no+' '+esc(i2.crew)+'</option>';});h+='</select></div>';
+  h+='<div class="field"><label>Name here</label><input type="text" data-k="name" value="'+esc(l.name||"")+'" placeholder="'+esc(it?it.crew:"")+'"></div>';
+  h+='<div class="field"><label>Label</label><input type="text" data-k="label" value="'+esc(l.label)+'"></div>';
+  h+='<div class="field"><label>How</label><select data-k="type"><option value="each"'+(l.type==="each"?' selected':'')+'>Count × factor</option><option value="case"'+(l.type==="case"?' selected':'')+'>Cases × factor + loose</option><option value="pan"'+(l.type==="pan"?' selected':'')+'>Pans, how full × factor</option><option value="toggle"'+(l.type==="toggle"?' selected':'')+'>Yes or no, yes adds factor</option></select></div>';
+  h+='<div class="field"><label>Factor</label><input class="num" type="text" inputmode="decimal" data-k="factor" value="'+esc(l.factor)+'"><span class="lab">'+esc(it?it.unit.toLowerCase():"")+' per counted unit</span></div>';
+  if(l.type==="case")h+='<div class="field"><label>Loose label</label><input type="text" data-k="loose" value="'+esc(l.loose||"")+'"></div>';
+  if(l.type==="pan")h+='<div class="field"><label>Full count</label><button class="btn ghost sm" data-wnofull aria-pressed="'+(l.nofull?"true":"false")+'">'+(l.nofull?'Fraction only':'Full pans + fraction')+'</button></div>';
+  h+='<div class="field"><label>Move to</label><select data-wmove><option value="">stay here</option>';wiz.spots.forEach(function(s){if(s.id!==l.spot)h+='<option value="'+esc(s.id)+'">'+esc(s.name)+'</option>';});h+='</select></div>';
+  h+='<div class="acts"><button class="btn ghost sm" data-wup'+(idx===0?' disabled':'')+'>Up</button><button class="btn ghost sm" data-wdown'+(idx===n-1?' disabled':'')+'>Down</button><button class="btn danger sm" data-wremove>'+(ui.armed["wrm"+l.id]?'Tap again to delete':'Delete line')+'</button></div></div>';
+  return h;
+}
+function wizNextOk(){
+  var a=wiz.a;
+  if(wiz.step===0){if(!a.service||!a.frz||!a.cold||!a.rack){toast("Answer every question on this step");return false;}}
+  if(wiz.step===1){if(!a.wsDry){toast("Wing Street dry storage, yes or no?");return false;}}
+  if(wiz.step===2){if(!a.soda){toast("Pick how sodas are kept");return false;}}
+  return true;
+}
+function wizPublish(){
+  if(!ui.pin){var pe=document.getElementById("gmpin");ui.pin=pe?pe.value.trim():"";}
+  if(!ui.pin){toast("Enter the GM PIN");return;}
+  if(!online()){toast("No signal. Publishing needs it.");return;}
+  var setup=wizSetup();
+  if(!setup.lines.length){toast("No count lines yet");return;}
+  wiz.saving=true;renderWizard();
+  api("save-setup",{store_number:state.store.store_number,gm_pin:ui.pin,master_pin:ui.pin,setup:setup,saved_by:ui.pinName||"",note:"Set up with the guide"}).then(function(r){
+    if(r.status!==200){wiz.saving=false;renderWizard();toast(r.status===403?"Wrong PIN":(r.data&&r.data.error||"Server error "+r.status));return;}
+    var meta={version:r.data.version,setup:setup,saved_by:ui.pinName||"",note:"Set up with the guide",saved_at:r.data.saved_at||nowIso(),fetched_at:nowIso()};
+    lsSet(K("setup"),meta);state.setupMeta=meta;lsDel(K("draft"));state.dirty=false;state.config=setup;
+    state.store.setup_version=r.data.version;lsSet("cc_store",state.store);
+    var names=(wiz.names||baseNames()).map(function(x){return String(x).trim();}).filter(Boolean);
+    var done=function(){lsDel(K("wiz"));wiz=null;wiz_saving=false;state.screen="app";ui.tab="count";render();toast("Published v"+r.data.version+". Every phone on this store gets it.");};
+    if(names.length){api("save-names",{store_number:state.store.store_number,gm_pin:ui.pin,master_pin:ui.pin,counters:names}).then(function(r2){if(r2.status===200&&r2.data.store){state.store.counters=r2.data.store.counters||names;lsSet("cc_store",state.store);}done();}).catch(done);}
+    else done();
+  }).catch(function(){wiz.saving=false;renderWizard();toast("Couldn't reach the server");});
+}
+var wiz_saving=false;
+function wizStart(){wizLoad();state.screen="wizard";render();window.scrollTo(0,0);}
+function wizClick(ev){
+  var t=ev.target,b,a=wiz.a;
+  if(t.id==="wExit"){wizSave();state.screen="needsetup";render();return true;}
+  if(t.id==="wBack"){wiz.step=Math.max(0,wiz.step-1);wiz.open=null;wiz.addPick=null;wizSave();render();window.scrollTo(0,0);return true;}
+  if(t.id==="wNext"){if(!wizNextOk())return true;if(wiz.step===3&&!wiz.generated)wizGenerate();wiz.step=Math.min(WIZ_STEPS.length-1,wiz.step+1);wiz.open=null;wiz.addPick=null;wiz.addQ="";wizSave();render();window.scrollTo(0,0);return true;}
+  if(t.id==="wPublish"){wizPublish();return true;}
+  if((b=t.closest("button[data-wc]"))){var nm=b.getAttribute("data-wc"),v=b.getAttribute("data-v");
+    if(nm==="mtLen0")a.mtLen[0]=v;else if(nm.indexOf("wsd.")===0)a.wsd[nm.slice(4)]=v;else if(nm==="rail.rows"){wiz.rail.rows=parseInt(v,10);if(wiz.rail.rows===1)wiz.rail.pans.forEach(function(p){p.row=1;});}else if(nm.indexOf("pan.row.")===0){var pl=nm.slice(8);wiz.rail.pans.forEach(function(p){if(p.line===pl)p.row=parseInt(v,10);});}else a[nm]=v;
+    wizSave();render();return true;}
+  if((b=t.closest("button[data-ws]"))){var f=b.getAttribute("data-ws"),d=parseInt(b.getAttribute("data-d"),10);var lim={frzN:[1,6],coldN:[1,6],dryN:[1,4],mtN:[1,2],wsN:[0,4]}[f];a[f]=Math.min(lim[1],Math.max(lim[0],(parseInt(a[f],10)||0)+d));wizSave();render();return true;}
+  if((b=t.closest("button[data-wct]"))){a.coldTypes[parseInt(b.getAttribute("data-wct"),10)]=b.getAttribute("data-v");wizSave();render();return true;}
+  if((b=t.closest("button[data-wm]"))){var fm=b.getAttribute("data-wm"),vm=b.getAttribute("data-v");var arr=a[fm]||(a[fm]=[]);var k=arr.indexOf(vm);if(k>=0)arr.splice(k,1);else{if(vm==="none")arr.length=0;else{var kn=arr.indexOf("none");if(kn>=0)arr.splice(kn,1);}arr.push(vm);}wizSave();render();return true;}
+  if((b=t.closest("button[data-wsd]"))){var sk=b.getAttribute("data-wsd");a.wsd[sk]=!a.wsd[sk];wizSave();render();return true;}
+  if((b=t.closest("button[data-wpx]"))){var pf=b.getAttribute("data-wpx"),pv=parseInt(b.getAttribute("data-v"),10);
+    if(pf==="lobbyExtra"){a.lobbyCased[pv]=!a.lobbyCased[pv];wizSave();render();return true;}
+    var parr=pf==="wsd.other"?a.wsd.other:a[pf];var pk=parr.indexOf(pv);if(pk>=0)parr.splice(pk,1);wizSave();render();return true;}
+  if((b=t.closest("button[data-wbub]"))){if(t.closest("[data-wcased]")){var ci=parseInt(t.closest("[data-wcased]").getAttribute("data-wcased"),10);a.lobbyCased[ci]=!a.lobbyCased[ci];wizSave();render();return true;}var bf=b.getAttribute("data-wbub"),bv=b.getAttribute("data-v");a[bf][bv]=!a[bf][bv];wizSave();render();return true;}
+  if((b=t.closest("button[data-wroom]"))){var rs=b.getAttribute("data-wroom");a.sodaRoom[rs]=!a.sodaRoom[rs];wizSave();render();return true;}
+  if((b=t.closest("button[data-witem]"))){var ino=parseFloat(b.getAttribute("data-witem"));var isExtra=(wiz.extras||[]).some(function(x){return x.no===ino;});if(isExtra){wiz.extras=wiz.extras.filter(function(x){return x.no!==ino;});}else{wiz.items[ino]=(wiz.items[ino]===false)?true:false;}wiz.generated=false;wizSave();render();return true;}
+  if(t.id==="wxAdd"){var sh=document.getElementById("wxsheet").value.trim(),cr=document.getElementById("wxcrew").value.trim(),un=document.getElementById("wxunit").value,af=parseFloat(document.getElementById("wxafter").value);if(!sh){toast("Sheet name is needed");return true;}var no=af+0.5;while((wiz.extras||[]).some(function(x){return x.no===no;}))no+=0.01;wiz.extras=wiz.extras||[];wiz.extras.push({no:Math.round(no*100)/100,sheet:sh.toUpperCase(),crew:cr||sh,unit:un});wiz.generated=false;wizSave();render();toast("Added after "+af);return true;}
+  if((b=t.closest("button[data-wsup]"))||(b=t.closest("button[data-wsdown]"))){var sid=b.getAttribute("data-wsup")||b.getAttribute("data-wsdown");var dir=b.hasAttribute("data-wsup")?-1:1;var si=wiz.spots.indexOf(wizSpot(sid));var sj=si+dir;if(sj<0||sj>=wiz.spots.length)return true;var tmp=wiz.spots[si];wiz.spots[si]=wiz.spots[sj];wiz.spots[sj]=tmp;wizSave();render();return true;}
+  if((b=t.closest("button[data-wsrm]"))){var rid=b.getAttribute("data-wsrm");if(!arm("wsrm"+rid))return true;wiz.spots=wiz.spots.filter(function(s){return s.id!==rid;});wiz.lines=wiz.lines.filter(function(l){return l.spot!==rid;});if(!wiz.spots.length)wiz.spots.push({id:"spot1",name:"Spot 1",col:"kitchen",kind:"other"});ui.armed={};wizSave();render();return true;}
+  if(t.id==="wsAdd"){var n2=1;while(wizSpot("spot"+n2))n2++;wiz.spots.push({id:"spot"+n2,name:"New spot",col:"kitchen",kind:"other"});wizSave();render();return true;}
+  if(t.id==="wsRebuild"){if(!arm("wsRebuild"))return true;wizGenerate();ui.armed={};render();toast("Rebuilt from your answers");return true;}
+  if((b=t.closest("button[data-wpick]"))){wiz.wspot=b.getAttribute("data-wpick");wiz.open=null;wiz.addPick=null;wiz.addQ="";wizSave();render();return true;}
+  if((b=t.closest("button[data-wopen]"))){var oid=b.getAttribute("data-wopen");wiz.open=(wiz.open===oid)?null:oid;ui.armed={};render();return true;}
+  if((b=t.closest("button[data-waddpick]"))){var ap=parseFloat(b.getAttribute("data-waddpick"));wiz.addPick=(wiz.addPick===ap)?null:ap;render();return true;}
+  if((b=t.closest("button[data-waddtpl]"))){var tt=(KB.byItem[wiz.addPick]||[])[parseInt(b.getAttribute("data-waddtpl"),10)];if(tt){var nl=wizAdd(tt,wiz.wspot);wiz.addPick=null;wiz.addQ="";wiz.open=nl.id;wizSave();render();toast("Added");}return true;}
+  if((b=t.closest("button[data-waddgen]"))){var gl=wizAdd(genericTpl(wiz.addPick,b.getAttribute("data-waddgen")),wiz.wspot);wiz.addPick=null;wiz.addQ="";wiz.open=gl.id;wizSave();render();return true;}
+  if((b=t.closest("button[data-wpanadd]"))){var size=b.getAttribute("data-wpanadd");var no2=wiz.addPick;var mt=null;(KB.byItem[no2]||[]).forEach(function(x){if(x.kind==="make"&&x.type==="pan"&&(panSizeOf(x.label)===size||!mt))mt=x;});
+    var t2=mt?clone(mt):{item:no2,name:"",label:panWord(size).toLowerCase()+" pan, set what a full one holds",type:"pan",factor:1,nofull:true};if(mt&&panSizeOf(mt.label)!==size)t2.label=panWord(size).toLowerCase()+" pan, "+t2.label;t2.nofull=true;
+    var pl2=wizAdd(t2,"make");var lastRow=wiz.rail.rows;wiz.rail.pans.push({row:lastRow,size:size,line:pl2.id});wiz.addPick=null;wiz.addQ="";wiz.open=pl2.id;wizSave();render();return true;}
+  if((b=t.closest("button[data-wpsize]"))){var ed=t.closest("[data-wedit]");var pid=ed.getAttribute("data-wedit");wiz.rail.pans.forEach(function(p){if(p.line===pid)p.size=b.getAttribute("data-wpsize");});wizSave();render();return true;}
+  if(t.closest("button[data-wpleft]")||t.closest("button[data-wpright]")){var ed2=t.closest("[data-wedit]");var pid2=ed2.getAttribute("data-wedit");var pans=wiz.rail.pans;var pi=-1;pans.forEach(function(p,i){if(p.line===pid2)pi=i;});var pdir=t.closest("button[data-wpleft]")?-1:1;var pj=pi+pdir;while(pj>=0&&pj<pans.length&&pans[pj].row!==pans[pi].row)pj+=pdir;if(pj<0||pj>=pans.length)return true;var pt=pans[pi];pans[pi]=pans[pj];pans[pj]=pt;wizSave();render();return true;}
+  if((b=t.closest("button[data-whpick]"))){var hp=parseFloat(b.getAttribute("data-whpick"));wiz.hpick=(wiz.hpick===hp)?null:hp;wiz.hspot="";render();return true;}
+  if((b=t.closest("button[data-whspot]"))){wiz.hspot=b.getAttribute("data-whspot");render();return true;}
+  if((b=t.closest("button[data-whtpl]"))){var ht=(KB.byItem[wiz.hpick]||[])[parseInt(b.getAttribute("data-whtpl"),10)];if(ht&&wiz.hspot){wizAdd(ht,wiz.hspot);wiz.hpick=null;wiz.hspot="";wizSave();render();toast("Placed");}return true;}
+  if((b=t.closest("button[data-whgen]"))){if(!wiz.hspot)return true;wizAdd(genericTpl(wiz.hpick,b.getAttribute("data-whgen")),wiz.hspot);wiz.hpick=null;wiz.hspot="";wizSave();render();toast("Placed");return true;}
+  if((b=t.closest("button[data-whzero]"))){var zno=parseFloat(b.getAttribute("data-whzero"));var zi=mItem(zno);if(zi){wiz.items[zno]=false;}else{wiz.extras=(wiz.extras||[]).filter(function(x){return x.no!==zno;});}wiz.hpick=null;wizSave();render();toast("Taken off the sheet");return true;}
+  if(t.id==="wnmAdd"){wiz.names=wiz.names||baseNames();wiz.names.push("");wizSave();render();var nl2=main.querySelectorAll("[data-wnm]");if(nl2.length)nl2[nl2.length-1].focus();return true;}
+  if((b=t.closest("button[data-wnmrm]"))){wiz.names.splice(parseInt(b.getAttribute("data-wnmrm"),10),1);wizSave();render();return true;}
+  var ed3=t.closest("[data-wedit]");
+  if(ed3){var l3=wizLine(ed3.getAttribute("data-wedit"));if(!l3)return true;
+    if(t.closest("button[data-wnofull]")){l3.nofull=!l3.nofull;wizSave();render();return true;}
+    if(t.closest("button[data-wremove]")){if(!arm("wrm"+l3.id))return true;wiz.lines=wiz.lines.filter(function(x){return x.id!==l3.id;});if(wiz.rail)wiz.rail.pans=wiz.rail.pans.filter(function(p){return p.line!==l3.id;});wiz.open=null;ui.armed={};wizSave();render();toast("Deleted");return true;}
+    if(t.closest("button[data-wup]")||t.closest("button[data-wdown]")){var wd=t.closest("button[data-wup]")?-1:1;var sib=wizLinesIn(l3.spot);var wk=sib.indexOf(l3);var other=sib[wk+wd];if(!other)return true;var arr2=wiz.lines;var i1=arr2.indexOf(l3),i2=arr2.indexOf(other);arr2[i1]=other;arr2[i2]=l3;wizSave();render();return true;}
+  }
+  return false;
+}
+function wizInput(ev){
+  var t=ev.target,a=wiz.a,k;
+  if((k=t.getAttribute("data-wdry"))!==null){a.dryNames[parseInt(k,10)]=t.value;wizSave();return true;}
+  if(t.id==="wisearch"){wiz.csearch=t.value;var pos=t.selectionStart;render();var s2=document.getElementById("wisearch");if(s2){s2.focus();try{s2.setSelectionRange(pos,pos);}catch(e){}}return true;}
+  if(t.id==="waddq"){wiz.addQ=t.value;wiz.addPick=null;var pos2=t.selectionStart;render();var s3=document.getElementById("waddq");if(s3){s3.focus();try{s3.setSelectionRange(pos2,pos2);}catch(e){}}return true;}
+  if((k=t.getAttribute("data-wsn"))){var s=wizSpot(k);if(s){s.name=t.value;wizSave();}return true;}
+  if((k=t.getAttribute("data-wnm"))!==null){wiz.names[parseInt(k,10)]=t.value;wizSave();return true;}
+  if(t.id==="gmpin"){ui.pin=t.value;return true;}
+  var ed=t.closest("[data-wedit]");
+  if(ed){var l=wizLine(ed.getAttribute("data-wedit"));if(!l)return true;var kk=t.getAttribute("data-k");if(!kk)return true;
+    if(kk==="factor"){var n=parseNum(t.value);if(n!==null)l.factor=n;}else if(kk==="item"){l.item=parseFloat(t.value);}else l[kk]=t.value;wizSave();return true;}
+  return false;
+}
+function wizChange(ev){
+  var t=ev.target,a=wiz.a,k;
+  if((k=t.getAttribute("data-wpsel"))){var v=parseFloat(t.value);if(!v)return true;var arr=(k==="wsd.other")?a.wsd.other:(a[k]||(a[k]=[]));if(arr.indexOf(v)<0)arr.push(v);wizSave();render();return true;}
+  if((k=t.getAttribute("data-wscol"))){var s=wizSpot(k);if(s){s.col=t.value;wizSave();}return true;}
+  var ed=t.closest("[data-wedit]");
+  if(ed&&t.tagName==="SELECT"){var l=wizLine(ed.getAttribute("data-wedit"));if(!l)return true;
+    if(t.hasAttribute("data-wmove")){var to=t.value;if(to&&wizSpot(to)){l.spot=to;if(wiz.rail)wiz.rail.pans=wiz.rail.pans.filter(function(p){return p.line!==l.id;});wiz.open=null;wizSave();render();toast("Moved to "+wizSpot(to).name);}return true;}
+    var kk=t.getAttribute("data-k");
+    if(kk==="type"){l.type=t.value;if(l.type==="case"&&!l.loose)l.loose="loose";wizSave();render();}
+    else if(kk==="item"){l.item=parseFloat(t.value);wizSave();render();}
+    return true;}
   return false;
 }
 
